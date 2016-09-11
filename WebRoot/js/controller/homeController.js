@@ -1,21 +1,24 @@
 vr.controller('homeController', function ($scope, $http, $timeout) {
+    $scope.banners = [];
+    $scope.list = [];
     $http.post("/image/list", {}).success(function (data) {
+        console.log(data);
         $scope.banners = data.banners;
-        $scope.list = [];
-        for (var i = 0; i < data.length; i = i + 2) {
+        var list = data.list;
+        for (var i = 0; i < list.length; i = i + 2) {
             item = [];
-            if (i < data.length) {
-                item[0] = data[i];
+            if (i < list.length) {
+                item[0] = list[i];
+                item[0]['view'] = item[0].dir + "?tourxml=" + item[0].tourxml + "&title=" + item[0].name;
             }
             i++;
-            if (i < data.length) {
-                item[1] = data[i];
+            if (i < list.length) {
+                item[1] = list[i];
+                item[1]['view'] = item[1].dir + "?tourxml=" + item[1].tourxml + "&title=" + item[1].name;
             } else {
                 item = null;
             }
             $scope.list.push(item);
-
         }
-        console.log($scope.list);
     });
 });

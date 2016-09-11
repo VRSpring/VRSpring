@@ -5,6 +5,8 @@ import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.vrspring.Bean.Banner;
+import com.vrspring.Bean.HomeBean;
 import com.vrspring.Bean.IndexBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,8 +53,10 @@ public class ImageController {
     // }
     @RequestMapping("/list")
     @ResponseBody
-    public List list(HttpServletRequest request) throws IOException {
+    public HomeBean list(HttpServletRequest request) throws IOException {
         System.out.println("请求开始");
+
+        HomeBean homeBean = new HomeBean();
         List<MediaDir> listMeDirs = new TaeBcFileSAO().getDirs("/" + ConfigConstants.IMAGE_DIRECTORY, 1, 10);
         List<IndexBean> list = new ArrayList<>();
         if (listMeDirs != null && listMeDirs.size() > 0) {
@@ -65,9 +69,14 @@ public class ImageController {
                 list.add(item);
             }
         }
-        Map<String, Object> model = new HashMap<String, Object>();
-        model.put("list", list);
-        return list;
+
+        List banners = new ArrayList<Banner>();
+        banners.add(new Banner("http://img3.imgtn.bdimg.com/it/u=2745492294,3770581201&fm=15&gp=0.jpg", "banner1"));
+        banners.add(new Banner("http://img4.imgtn.bdimg.com/it/u=4133792063,113688833&fm=15&gp=0.jpg", "banner2"));
+        banners.add(new Banner("http://img3.imgtn.bdimg.com/it/u=1257327548,2477839963&fm=15&gp=0.jpg", "banner3"));
+        homeBean.setBanners(banners);
+        homeBean.setList(list);
+        return homeBean;
     }
 
 }

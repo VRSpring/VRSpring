@@ -24,5 +24,13 @@ vr.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
         url: '/home',
         templateUrl: 'js/template/homeTemplate.html',
         controller: 'homeController'
-    })
+    }).state('channel', {
+        url: '/channel',
+        templateUrl: 'js/template/channelTemplate.html',
+        controller: 'channelController'
+    }).state('about', {
+        url: '/about',
+        templateUrl: 'js/template/aboutTemplate.html',
+        controller: 'aboutController'
+    });
 });

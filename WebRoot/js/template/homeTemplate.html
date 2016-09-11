@@ -1,41 +1,32 @@
-<div class="swiper-container">
-    <!-- Additional required wrapper -->
-    <div class="swiper-wrapper">
-        <!-- Slides -->
-        <div class="swiper-slide">
-            <a href="pdetail.html">
-                <img src="./images/banner_0002_1.jpg"/>
-                <p>测试1测试1测试1测试1测试1</p>
-            </a>
+<swiper-container list="list">
+    <div class="swiper-container">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide" ng-repeat="banner in banners">
+                <a href="pdetail.html">
+                    <img src="{{banner.url}}"/>
+                    <p>{{banner.name}}</p>
+                </a>
+            </div>
         </div>
-        <div class="swiper-slide">
-            <a href="pdetail.html">
-                <img src="./images/banner_0001_2.jpg"/>
-                <p>测试2</p>
-            </a>
-        </div>
-        <div class="swiper-slide">
-            <a href="pdetail.html">
-                <img src="./images/banner_0000_3.jpg"/>
-                <p>测试3</p>
-            </a>
-        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
     </div>
-    <!-- If we need pagination -->
-    <div class="swiper-pagination"></div>
-</div>
+</swiper-container>
+
 <div class="content">
     <div class="weui-row weui-no-gutter" ng-repeat="item in list">
         <div class="h-center">
             <div class="weui-col-50 ">
-                <a href="pdetail-small.html">
+                <a href="{{item[0].view}}">
                     <img class="img-left" src="{{item[0].path}}" alt="">
                 </a>
                 <p class='desc'>{{item[1].name}}</p>
             </div>
             <div class="weui-col-50">
-                <a href="pdetail.html">
-                    <img class="img-right" src="{{item[1].path}}" alt="">
+                <a href="{{item[1].view}}">
+                    <img class="img-right" src="{{item[0].path}}" alt="">
                 </a>
                 <p class='desc'>{{item[1].name}}</p>
             </div>
@@ -139,9 +130,3 @@
         <p class='footer'>@ 2016 we are vspring</p>
     </div>
 </div>
-<script>
-    $(".swiper-container").swiper({
-        loop: true,
-        autoplay: 3000
-    });
-</script>
