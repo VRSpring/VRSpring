@@ -1,6 +1,14 @@
 vr.controller('homeController', function ($scope, $http, $timeout) {
     $scope.banners = [];
     $scope.list = [];
+
+    $scope.$on('ngRepeatFinished', function () {
+        jQuery(".swiper-container").swiper({
+            loop: true,
+            autoplay: 3000
+        });
+    });
+
     $http.post("/image/list", {}).success(function (data) {
         console.log(data);
         $scope.banners = data.banners;

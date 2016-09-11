@@ -1,19 +1,17 @@
-<swiper-container list="list">
-    <div class="swiper-container">
-        <!-- Additional required wrapper -->
-        <div class="swiper-wrapper">
-            <!-- Slides -->
-            <div class="swiper-slide" ng-repeat="banner in banners">
-                <a href="pdetail.html">
-                    <img src="{{banner.url}}"/>
-                    <p>{{banner.name}}</p>
-                </a>
-            </div>
+<div class="swiper-container">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide" ng-repeat="banner in banners" end-repeat>
+            <a href="pdetail.html">
+                <img src="{{banner.url}}"/>
+                <p>{{banner.name}}</p>
+            </a>
         </div>
-        <!-- If we need pagination -->
-        <div class="swiper-pagination"></div>
     </div>
-</swiper-container>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+</div>
 
 <div class="content">
     <div class="weui-row weui-no-gutter" ng-repeat="item in list">
