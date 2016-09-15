@@ -1,19 +1,23 @@
 package com.vrspring.controller;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.vrspring.Bean.Banner;
-import com.vrspring.Bean.HomeBean;
-import com.vrspring.Bean.IndexBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.media.MediaDir;
+import com.vrspring.Bean.Banner;
+import com.vrspring.Bean.HomeBean;
+import com.vrspring.Bean.IndexBean;
 import com.vrspring.sao.TaeBcFileSAO;
 import com.vrspring.util.ConfigConstants;
 
@@ -22,61 +26,57 @@ import com.vrspring.util.ConfigConstants;
  * @version 0.1
  */
 @Controller
-public class ImageController {
+public class ImageController
+{
 
-    // @RequestMapping("/list")
-    // public ModelAndView list(HttpServletRequest request) throws IOException {
-    // System.out.println("请求开始");
-    // String path = request.getSession().getServletContext().getRealPath("/") +
-    // ConfigConstants.IMAGE_DIRECTORY;
-    // File[] arr = new File(path).listFiles();
-    // List<Map<String, String>> list = new LinkedList<Map<String, String>>();
-    // if (arr != null && arr.length > 0) {
-    // for (File f : arr) {
-    // Map<String, String> map = new HashMap<String, String>();
-    // map.put("dir",ConfigConstants.DNS_NAME+"/"+ConfigConstants.IMAGE_DIRECTORY+
-    // "/" + f.getName()
-    // + "/tour.html");
-    // File panos = new File(f, "/panos");
-    // File thumb = new File(panos.listFiles()[0], "/thumb.jpg");
-    // String p = thumb.getPath();
-    // map.put("path", ConfigConstants.DNS_NAME+"/" +
-    // p.substring(p.indexOf(ConfigConstants.IMAGE_DIRECTORY)));
-    // String name = f.getName();
-    // map.put("name", name);
-    // list.add(map);
-    // }
-    // }
-    // Map<String, Object> model = new HashMap<String, Object>();
-    // model.put("list", list);
-    // return new ModelAndView("/list.jsp", model);
-    // }
-    @RequestMapping("/list")
-    @ResponseBody
-    public HomeBean list(HttpServletRequest request) throws IOException {
-        System.out.println("请求开始");
+	@Autowired
+	private TaeBcFileSAO taeBcFileSAO;
 
-        HomeBean homeBean = new HomeBean();
-        List<MediaDir> listMeDirs = new TaeBcFileSAO().getDirs("/" + ConfigConstants.IMAGE_DIRECTORY, 1, 10);
-        List<IndexBean> list = new ArrayList<>();
-        if (listMeDirs != null && listMeDirs.size() > 0) {
-            for (MediaDir dir : listMeDirs) {
-                IndexBean item = new IndexBean();
-                item.setDir(ConfigConstants.DNS_NAME + "/VR-Engine/tour.html");
-                item.setName(dir.getName());
-                item.setPath(ConfigConstants.IMAGE_URL + "/" + dir.getDir() + "/panos/1.tiles/thumb.jpg");
-                item.setTourxml(ConfigConstants.IMAGE_URL + "/" + dir.getDir() + "/tour.xml");
-                list.add(item);
-            }
-        }
+	@RequestMapping("/list")
+	@ResponseBody
+	public HomeBean list(HttpServletRequest request) throws IOException
+	{
+		System.out.println("请求开始！");
 
-        List banners = new ArrayList<Banner>();
-        banners.add(new Banner("http://img3.imgtn.bdimg.com/it/u=2745492294,3770581201&fm=15&gp=0.jpg", "banner1"));
-        banners.add(new Banner("http://img4.imgtn.bdimg.com/it/u=4133792063,113688833&fm=15&gp=0.jpg", "banner2"));
-        banners.add(new Banner("http://img3.imgtn.bdimg.com/it/u=1257327548,2477839963&fm=15&gp=0.jpg", "banner3"));
-        homeBean.setBanners(banners);
-        homeBean.setList(list);
-        return homeBean;
-    }
+		HomeBean homeBean = new HomeBean();
+		List<MediaDir> listMeDirs = taeBcFileSAO.getDirs("/"
+				+ ConfigConstants.IMAGE_DIRECTORY, 1, 10);
+		List<IndexBean> list = new ArrayList<IndexBean>();
+		if (listMeDirs != null && listMeDirs.size() > 0)
+		{
+			for (MediaDir dir : listMeDirs)
+			{
+				String panosPath = dir.getDir() + "/panos";
+				String path = ConfigConstants.IMAGE_URL
+						+ taeBcFileSAO.getDirs(panosPath, 1, 10).get(0)
+								.getDir() + "/thumb.jpg";
+				String tourxml = ConfigConstants.IMAGE_URL + "/" + dir.getDir()
+						+ "/tour.xml";
+				String name = dir.getName();
+				IndexBean item = new IndexBean();
+				item.setDir(ConfigConstants.DNS_NAME + "/VR-Engine/tour.html");
+				item.setName(name);
+				item.setPath(path);
+				item.setTourxml(tourxml);
+				list.add(item);
+			}
+		}
+
+		// 从所有VR资源当中随机选取BANNER_NUM个图片放入banner中
+		List banners = new ArrayList<Banner>();
+		Set<Integer> set = new HashSet<Integer>();
+		while (set.size() < ConfigConstants.BANNER_NUM)
+		{
+			int index = (new Random().nextInt(list.size()));
+			if (set.add(index))
+			{
+				banners.add(new Banner(list.get(index).getPath(), list.get(
+						index).getName()));
+			}
+		}
+		homeBean.setBanners(banners);
+		homeBean.setList(list);
+		return homeBean;
+	}
 
 }
