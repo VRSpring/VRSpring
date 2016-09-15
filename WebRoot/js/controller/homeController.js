@@ -9,11 +9,11 @@ vr.controller('homeController', function ($scope, $http, $timeout) {
         });
     });
 
-    $http.post("/image/list", {}).success(function (data) {
+    $http.post("image/list", {}).success(function (data) {
         console.log(data);
         $scope.banners = data.banners;
         var list = data.list;
-        for (var i = 0; i < list.length; i = i + 2) {
+        for (var i = 0; i < list.length; i++) {
             item = [];
             if (i < list.length) {
                 item[0] = list[i];
