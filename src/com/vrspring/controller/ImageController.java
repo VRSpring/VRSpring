@@ -1,25 +1,19 @@
 package com.vrspring.controller;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.alibaba.media.MediaDir;
 import com.vrspring.Bean.Banner;
 import com.vrspring.Bean.HomeBean;
 import com.vrspring.Bean.IndexBean;
 import com.vrspring.sao.TaeBcFileSAO;
 import com.vrspring.util.ConfigConstants;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * @author LIHAO
@@ -62,20 +56,22 @@ public class ImageController
 			}
 		}
 
-		// 从所有VR资源当中随机选取BANNER_NUM个图片放入banner中
-		List banners = new ArrayList<Banner>();
-		Set<Integer> set = new HashSet<Integer>();
-		while (set.size() < ConfigConstants.BANNER_NUM)
-		{
-			int index = (new Random().nextInt(list.size()));
-			if (set.add(index))
+		if (list.size() > 0) {
+			// 从所有VR资源当中随机选取BANNER_NUM个图片放入banner中
+			List banners = new ArrayList<Banner>();
+			Set<Integer> set = new HashSet<Integer>();
+			while (set.size() < ConfigConstants.BANNER_NUM)
 			{
-				banners.add(new Banner(list.get(index).getPath(), list.get(
-						index).getName()));
+				int index = (new Random().nextInt(list.size()));
+				if (set.add(index)) {
+					banners.add(new Banner(list.get(index).getPath(), list.get(
+							index).getName()));
+				}
 			}
+			homeBean.setBanners(banners);
+			homeBean.setList(list);
 		}
-		homeBean.setBanners(banners);
-		homeBean.setList(list);
+
 		return homeBean;
 	}
 

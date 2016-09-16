@@ -15,19 +15,17 @@ gulp.task('js', function (cb) {
             './src/js/city-picker.js'
         ])
         .pipe(concat({path: 'city-picker.js'}))
-        .pipe(gulp.dest('./dist/demos/js/'))
-        .on("end", end);
-
+        .pipe(gulp.dest('./dist/demos/js/'));
 
 });
 
-gulp.task('uglify', ["js"], function () {
-    return gulp.src(['./dist/js/*.js', '!./dist/js/*.min.js'])
+gulp.task('uglify', function () {
+    return gulp.src(['../WebRoot/js/lib/*.js', '!../WebRoot/js/lib/*.min.js'])
         .pipe(uglify({
             preserveComments: "license"
         }))
         .pipe(ext_replace('.min.js'))
-        .pipe(gulp.dest('./dist/js'));
+        .pipe(gulp.dest('../WebRoot/js/lib/'));
 });
 
 gulp.task('less', function () {

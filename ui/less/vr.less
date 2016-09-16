@@ -2,10 +2,10 @@ body {
   min-height: 100vh;
   * {
     box-sizing: border-box;
-  }
+    }
   .hidden {
     display: none;
-  }
+    }
   .text-center {
     text-align: center;
   }
@@ -19,7 +19,7 @@ body {
     height: 50px;
     .logo {
       width: 100%;
-    }
+        }
     div.h-center {
       height: 100%;
       width: 100%;
@@ -29,8 +29,8 @@ body {
       align-items: center;
       flex-direction: row;
       overflow: auto;
+        }
     }
-  }
   .bg-black {
     background: black;
   }
@@ -77,18 +77,21 @@ body {
           border-radius: 50%;
         }
       }
-    }
+        }
     .weui-row {
       .weui-col-50 {
         position: relative;
-        box-sizing: border-box;
+        margin: 0;
         padding: 0;
         p.desc {
           position: absolute;
           color: #000;
           bottom: 5px;
-          left: 8px;
-          right: 8px;
+          left: 0px;
+          right: 0px;
+          color: white;
+          padding-left: 5px;
+          padding-right: 5px;
           text-align: center;
         }
         p.desc:before {
@@ -98,13 +101,10 @@ body {
           left: 0;
           bottom: 0;
           right: 0;
-          border-radius: 5px;
-          background: hsla(0, 0%, 100%, 0.3);
-          filter: blur(10px);
-          margin: -5px;
+          background: hsla(0, 50%, 100%, 0.3);
         }
       }
-    }
+        }
     article {
       .msg {
         padding: 0;
@@ -120,11 +120,11 @@ body {
           color: #888;
         }
       }
-    }
+        }
     .title {
       font-weight: bold;
       font-size: 30px;
-    }
+        }
     .image-middle {
       max-width: 35%;
       margin: 0 auto;
@@ -162,16 +162,16 @@ body {
       text-align: center;
       width: 100%;
     }
-  }
+    }
   .swiper-container {
     width: 100%;
     height: 200px;
     margin-bottom: 10px;
-  }
+    }
   .swiper-container img {
     display: block;
-    width: 100%;
-  }
+        width: 100%;
+    }
   .swiper-slide {
     p {
       display: block;
@@ -184,5 +184,17 @@ body {
       transform: translate(-50%, -50%);
       overflow: hidden;
     }
-  }
+    }
+  .qrcode {
+    display: block;
+    margin: 24px auto 16px;
+    max-width: 100%;
+    }
+  .qrcode-link {
+    display: table;
+    margin: 24px auto 16px;
+    }
+  .qrcode-link .qrcode {
+    margin: 0;
+    }
 }
