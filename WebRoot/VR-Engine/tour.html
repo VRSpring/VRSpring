@@ -68,6 +68,94 @@
             mobilescale: 1.0,
             passQueryParameters: true
         });
+        var krpano = document.getElementById("krpanoSWFObject");
+
+        function showmouseinfo() {
+//            krpano.set('showerrors',true);
+//            krpano.set('xml.url',window.document.location.href)
+//            console.log( krpano.get('xml.url'));
+//            krpano.call("toupper(xml.url);");
+//            console.log( krpano.get('xml.url'));
+        }
+        function onTopLeftButtonClick() {
+            krpano.call("switch(plugin[skin_gyro].enabled); if(plugin[skin_gyro].enabled, skin_showmap(false));");
+        }
+
+        function onTopRightButtonClick() {
+            krpano.call("webvr.enterVR()");
+        }
+        function onPreButtonClick() {
+            krpano.call("if(skin_settings.thumbs_loop, skin_nextscene_loop(-1), skin_nextscene(-1) );");
+        }
+
+        function onNextButtonClick() {
+            krpano.call("if(skin_settings.thumbs_loop, skin_nextscene_loop(+1), skin_nextscene(+1) );");
+        }
+        function hiddenSystemMenu() {
+            krpano.call("set(layer[skin_layer].visible,false)");
+//            krpano.call("set(layer[skin_splitter_bottom].visible,false)");
+//            krpano.call("set(layer[skin_control_bar].visible,false)");
+        }
+
+        function addTopLeftButton() {
+            krpano.call("addlayer(TopLeftButton);");
+            krpano.call("set(layer[TopLeftButton].keep,true)");
+            krpano.call("set(layer[TopLeftButton].align,lefttop);");
+            krpano.call("set(layer[TopLeftButton].url,'../images/full_active.png');");
+            krpano.call("set(layer[TopLeftButton].width,32)");
+            krpano.call("set(layer[TopLeftButton].height,32)");
+            krpano.call("set(layer[TopLeftButton].x,20)");
+            krpano.call("set(layer[TopLeftButton].y,20)");
+            krpano.call("set(layer[TopLeftButton].onclick,js(onTopLeftButtonClick()));");
+        }
+
+        function addTopRightButton() {
+            krpano.call("addlayer(TopRightButton);");
+            krpano.call("set(layer[TopRightButton].keep,true)");
+            krpano.call("set(layer[TopRightButton].align,righttop);");
+            krpano.call("set(layer[TopRightButton].url,'../images/vr.png');");
+            krpano.call("set(layer[TopRightButton].width,32)");
+            krpano.call("set(layer[TopRightButton].height,32)");
+            krpano.call("set(layer[TopRightButton].x,20)");
+            krpano.call("set(layer[TopRightButton].y,20)");
+            krpano.call("set(layer[TopRightButton].onclick,js(onTopRightButtonClick()));");
+        }
+        function addPreButton() {
+            krpano.call("addlayer(PreButton);");
+            krpano.call("set(layer[PreButton].keep,true)");
+            krpano.call("set(layer[PreButton].align,left);");
+            krpano.call("set(layer[PreButton].url,'../images/pre.png');");
+            krpano.call("set(layer[PreButton].width,32)");
+            krpano.call("set(layer[PreButton].height,32)");
+            krpano.call("set(layer[PreButton].x,20)");
+            krpano.call("set(layer[PreButton].y,20)");
+            krpano.call("set(layer[PreButton].onclick,js(onPreButtonClick()));");
+
+        }
+
+        function addNextButton() {
+            krpano.call("addlayer(NextButton);");
+            krpano.call("set(layer[NextButton].keep,true)");
+            krpano.call("set(layer[NextButton].align,right);");
+            krpano.call("set(layer[NextButton].url,'../images/next.png');");
+            krpano.call("set(layer[NextButton].width,32)");
+            krpano.call("set(layer[NextButton].height,32)");
+            krpano.call("set(layer[NextButton].x,20)");
+            krpano.call("set(layer[NextButton].y,20)");
+            krpano.call("set(layer[NextButton].onclick,js(onNextButtonClick()));");
+        }
+
+
+        (function addLyer() {
+            krpano.set('debugmode', true);
+            krpano.set('showerrors', true);
+            hiddenSystemMenu();
+            addTopLeftButton();
+            addTopRightButton();
+            addPreButton();
+            addNextButton();
+        })();
+
     </script>
 </div>
 
