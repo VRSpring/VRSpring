@@ -218,12 +218,22 @@ body .qrcode-link .qrcode {
   margin: 0;
 }
 
-body p.wedding {
+body div.wedding-container {
+  width: 100%;
+}
+
+body div.wedding-container p.wedding {
   position: relative;
+  padding: 0;
+  line-height: 1em;
   margin: 0;
 }
 
-body p.wedding .qrcode {
+body div.wedding-container p.wedding * {
+  max-width: 100%;
+}
+
+body div.wedding-container p.wedding .qrcode {
   display: block;
   position: absolute;
   bottom: 10px;
@@ -234,12 +244,13 @@ body p.wedding .qrcode {
   max-width: 100%;
 }
 
-body p.wedding .qrcode-link {
+body div.wedding-container p.wedding .qrcode-link {
   display: block;
   margin: 0;
+  padding: 0;
 }
 
-body p.wedding .qrcode-link .qrcode {
+body div.wedding-container p.wedding .qrcode-link .qrcode {
   display: block;
   position: absolute;
   margin: 24px auto 16px;

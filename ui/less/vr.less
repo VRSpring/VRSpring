@@ -197,29 +197,39 @@ body {
     .qrcode-link .qrcode {
         margin: 0;
     }
-    p.wedding {
-        position: relative;
-        margin: 0;
-        .qrcode {
-            display: block;
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translate(-50%, 0);
-            margin: 24px auto 16px;
-            max-width: 100%;
-        }
-        .qrcode-link {
-            display: block;
+    div.wedding-container {
+        width: 100%;
+        p.wedding {
+            position: relative;
             margin: 0;
-        }
-        .qrcode-link .qrcode {
-            display: block;
-            position: absolute;
-            margin: 24px auto 16px;
-            bottom: 10px;
-            left: 50%;
-            transform: translate(-50%, 0);
+            padding: 0;
+            line-height: 1em;
+            * {
+                max-width: 100%;
+            }
+            margin: 0;
+            .qrcode {
+                display: block;
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translate(-50%, 0);
+                margin: 24px auto 16px;
+                max-width: 100%;
+            }
+            .qrcode-link {
+                display: block;
+                margin: 0;
+                padding: 0;
+                .qrcode {
+                    display: block;
+                    position: absolute;
+                    margin: 24px auto 16px;
+                    bottom: 10px;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                }
+            }
         }
     }
 }
