@@ -1,4 +1,4 @@
-vr.controller('homeController', function ($scope, $http, $timeout) {
+vr.controller('homeController', function ($scope, $http) {
     $scope.banners = [];
     $scope.list = [];
 

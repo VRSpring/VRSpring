@@ -108,22 +108,31 @@ vr.directive('endRepeat', ['$timeout', function ($timeout) {
                             domElement.title = 'Download QR code';
                         }
 
-                        if (canvas2D) {
-                            draw(context, qr, modules, tile);
+                        // if (canvas2D) {
+                        //     draw(context, qr, modules, tile);
+                        //
+                        //     if (download) {
+                        //         domElement.href = canvas.toDataURL('image/png');
+                        //         return;
+                        //     }
+                        // } else {
+                        //     domElement.innerHTML = qr.createImgTag(tile, 0);
+                        //     $img = element.find('img');
+                        //     $img.addClass('qrcode');
+                        //
+                        //     if (download) {
+                        //         domElement.href = $img[0].src;
+                        //         return;
+                        //     }
+                        // }
 
-                            if (download) {
-                                domElement.href = canvas.toDataURL('image/png');
-                                return;
-                            }
-                        } else {
-                            domElement.innerHTML = qr.createImgTag(tile, 0);
-                            $img = element.find('img');
-                            $img.addClass('qrcode');
+                        domElement.innerHTML = qr.createImgTag(tile, 0);
+                        $img = element.find('img');
+                        $img.addClass('qrcode');
 
-                            if (download) {
-                                domElement.href = $img[0].src;
-                                return;
-                            }
+                        if (download) {
+                            domElement.href = $img[0].src;
+                            return;
                         }
 
                         if (href) {

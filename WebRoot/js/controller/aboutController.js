@@ -1,3 +1,3 @@
-vr.controller('aboutController', function ($scope, $http, $timeout) {
+vr.controller('aboutController', function ($scope, $http) {
 
 });

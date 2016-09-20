@@ -1,3 +1,3 @@
-vr.controller('channelController', function ($scope, $http, $timeout) {
-
+vr.controller('channelController', function ($scope, $http) {
+    $scope.url = 'www.vrspring.com';
 });
