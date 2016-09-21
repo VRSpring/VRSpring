@@ -10,7 +10,6 @@ vr.controller('homeController', function ($scope, $http) {
     });
 
     $http.post("image/list", {}).success(function (data) {
-        console.log(data);
         $scope.banners = data.banners;
         var list = data.list;
         for (var i = 0; i < list.length; i++) {
@@ -24,7 +23,7 @@ vr.controller('homeController', function ($scope, $http) {
                 item[1] = list[i];
                 item[1]['view'] = item[1].dir + "?tourxml=" + item[1].tourxml + "&title=" + item[1].name;
             } else {
-                item = null;
+                item = {};
             }
             $scope.list.push(item);
         }

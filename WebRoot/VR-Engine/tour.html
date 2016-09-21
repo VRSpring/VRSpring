@@ -108,7 +108,6 @@
             krpano.call("set(layer[TopLeftButton].y,20)");
             krpano.call("set(layer[TopLeftButton].onclick,js(onTopLeftButtonClick()));");
         }
-
         function addTopRightButton() {
             krpano.call("addlayer(TopRightButton);");
             krpano.call("set(layer[TopRightButton].keep,true)");
@@ -119,16 +118,31 @@
             krpano.call("set(layer[TopRightButton].x,20)");
             krpano.call("set(layer[TopRightButton].y,20)");
             krpano.call("set(layer[TopRightButton].onclick,js(onTopRightButtonClick()));");
+            krpano.call("set(fullscreen,true);");
+        }
+
+        function addCenterButton() {
+            krpano.call("addlayer(CenterButton);");
+            krpano.call("set(layer[CenterButton].keep,true)");
+            krpano.call("set(layer[CenterButton].edge,center);");
+            krpano.call("set(layer[CenterButton].align,center);");
+            krpano.call("set(layer[CenterButton].url,'../images/vr_active.png');");
+            krpano.call("set(layer[CenterButton].width,32)");
+            krpano.call("set(layer[CenterButton].height,32)");
+            krpano.call("set(layer[CenterButton].x,0)");
+            krpano.call("set(layer[CenterButton].y,45%)");
+            krpano.call("set(layer[CenterButton].onclick,js(onTopRightButtonClick()));");
+            krpano.call("set(fullscreen,true);");
         }
         function addPreButton() {
             krpano.call("addlayer(PreButton);");
             krpano.call("set(layer[PreButton].keep,true)");
             krpano.call("set(layer[PreButton].align,left);");
             krpano.call("set(layer[PreButton].url,'../images/pre.png');");
-            krpano.call("set(layer[PreButton].width,32)");
-            krpano.call("set(layer[PreButton].height,32)");
-            krpano.call("set(layer[PreButton].x,20)");
-            krpano.call("set(layer[PreButton].y,20)");
+            krpano.call("set(layer[PreButton].width,32);");
+            krpano.call("set(layer[PreButton].height,32);");
+            krpano.call("set(layer[PreButton].x,35%);");
+            krpano.call("set(layer[PreButton].y,45%);");
             krpano.call("set(layer[PreButton].onclick,js(onPreButtonClick()));");
 
         }
@@ -138,20 +152,22 @@
             krpano.call("set(layer[NextButton].keep,true)");
             krpano.call("set(layer[NextButton].align,right);");
             krpano.call("set(layer[NextButton].url,'../images/next.png');");
-            krpano.call("set(layer[NextButton].width,32)");
-            krpano.call("set(layer[NextButton].height,32)");
-            krpano.call("set(layer[NextButton].x,20)");
-            krpano.call("set(layer[NextButton].y,20)");
+            krpano.call("set(layer[NextButton].width,32);");
+            krpano.call("set(layer[NextButton].height,32);");
+            krpano.call("set(layer[NextButton].x,35%);");
+            krpano.call("set(layer[NextButton].y,45%);");
             krpano.call("set(layer[NextButton].onclick,js(onNextButtonClick()));");
         }
 
 
         (function addLyer() {
-            krpano.set('debugmode', true);
-            krpano.set('showerrors', true);
+//            krpano.set('debugmode', true);
+//            krpano.set('showerrors', true);
+            console.log(krpano.get('scene'));
             hiddenSystemMenu();
             addTopLeftButton();
             addTopRightButton();
+            addCenterButton();
             addPreButton();
             addNextButton();
         })();
