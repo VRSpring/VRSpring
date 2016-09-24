@@ -82,6 +82,10 @@
         function onTopLeftButtonClick() {
             krpano.call("switch(plugin[skin_gyro].enabled); if(plugin[skin_gyro].enabled, skin_showmap(false));");
         }
+        function onCenterButtonClick() {
+            krpano.call("webvr.enterVR()");
+        }
+
 
         function onTopRightButtonClick() {
             window.location.href = "/#/channel";
@@ -139,7 +143,7 @@
             krpano.call("set(layer[CenterButton].backgroundalpha,'0.4');");
             krpano.call("set(layer[CenterButton].x,0)");
             krpano.call("set(layer[CenterButton].y,45%)");
-            krpano.call("set(layer[CenterButton].onclick,js(onTopRightButtonClick()));");
+            krpano.call("set(layer[CenterButton].onclick,js(onCenterButtonClick()));");
             krpano.call("set(fullscreen,true);");
         }
         function addPreButton() {
