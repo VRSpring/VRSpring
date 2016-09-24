@@ -211,16 +211,44 @@
     <!-- the EnterVR/ExitVR and SetupVR buttons -->
     <style name="webvr_button_style"
            url="%SWFPATH%/plugins/textfield.swf"
-           backgroundcolor="0x000000"
-           backgroundalpha="0.5"
-           roundedge="calc:9*webvr_setup_scale*webvr_button_scale"
-           css="calc:'color:#FFFFFF;font-size:' + 20*webvr_setup_scale*webvr_button_scale + 'px;'"
-           padding="calc:6*webvr_setup_scale*webvr_button_scale + ' ' + 10*webvr_setup_scale*webvr_button_scale"
+           autowidth="auto"
+           autoheight="auto"
+           vcenter="true"
+           roundedge="calc:5*webvr_setup_scale*webvr_button_scale"
+           css="calc:'text-align:center;color:#ffffff;font-size:' + 30*webvr_setup_scale*webvr_button_scale + 'px;'"
+           padding="calc:5*webvr_setup_scale*webvr_button_scale + ' ' + 10*webvr_setup_scale*webvr_button_scale"
+    />
+
+    <style name="webvr_button_style_center"
+           url="%SWFPATH%/plugins/textfield.swf"
+           width="calc:'50*webvr_setup_scale*webvr_button_scale'"
+           height="calc:'50*webvr_setup_scale*webvr_button_scale '"
+           vcenter="true"
+           border="true"
+           bordercolor="0xffffff"
+           borderalpha="1.0"
+           borderwidth="1.0"
+           roundedge="calc:30*webvr_setup_scale*webvr_button_scale"
+           css="calc:'text-align:center;color:#ffffff;font-size:' + 30*webvr_setup_scale*webvr_button_scale + 'px;'"
+           padding="0"
+    />
+    <style name="webvr_button_style_center_small"
+           url="%SWFPATH%/plugins/textfield.swf"
+           width="calc:'25*webvr_setup_scale*webvr_button_scale'"
+           height="calc:'25*webvr_setup_scale*webvr_button_scale '"
+           vcenter="true"
+           border="true"
+           bordercolor="0xffffff"
+           borderalpha="1.0"
+           borderwidth="1.0"
+           roundedge="calc:25*webvr_setup_scale*webvr_button_scale"
+           css="calc:'text-align:center;color:#ffffff;font-size:' + 25*webvr_setup_scale*webvr_button_scale + 'px;'"
+           padding="0"
     />
 
     <layer name="webvr_enterbutton" keep="true" vr="true"
            style="webvr_button_style"
-           html="Enter VR"
+           html="进入 VR"
            align="top" y="24"
            autoalpha="true" alpha="0.0"
            onclick="webvr.enterVR();"
@@ -228,7 +256,7 @@
 
     <layer name="webvr_exitbutton" keep="true" vr="true"
            style="webvr_button_style"
-           html="Exit VR"
+           html="退出 VR"
            align="top" y="24"
            autoalpha="true" alpha="0.0"
            onclick="webvr.exitVR();"
@@ -236,7 +264,7 @@
 
     <layer name="webvr_setupbutton" keep="true" vr="true"
            style="webvr_button_style"
-           html="VR Setup"
+           html="VR 设置"
            align="bottom" y="24"
            autoalpha="true" alpha="0.0"
            onclick="vr_setup()"
@@ -366,13 +394,14 @@
 
         <!-- create the text elements -->
         set(vr_setup_text_parent, 'vr_setup_m1');
-        vr_setup_createtext(vr_setup_title, 'MOBILE VR SETUP', center, center, 0, -225, #FFFFFF, false);
+        vr_setup_createtext(vr_setup_title, '<i class='fa fa-android'>VR设置</i>', center, center, 0, -225, #FFFFFF,
+        false);
 
-        vr_setup_createtext(vr_setup_dvn1, 'Device:', center, right, 0, -145, #FFFFFF, true, vr_setup_select('screen')
+        vr_setup_createtext(vr_setup_dvn1, '设备类型:', center, right, 0, -145, #FFFFFF, true, vr_setup_select('screen')
         );
         vr_setup_createtext(vr_setup_dvn2, get(i_devicename), center, left, 0, -145, get(sizcol), true,
         vr_setup_select('screen') );
-        vr_setup_createtext(vr_setup_siz1, 'Screensize:', center, right, 0, -105, #FFFFFF, true,
+        vr_setup_createtext(vr_setup_siz1, '屏幕大小:', center, right, 0, -105, #FFFFFF, true,
         vr_setup_select('screen') );
         vr_setup_createtext(vr_setup_siz2, get(i_screensize), center, left, 0, -105, get(sizcol), true,
         vr_setup_select('screen') );
@@ -380,12 +409,12 @@
         vr_setup_createtext(vr_setup_ipd1, 'IPD:', center, right, 0, -35, #FFFFFF, true, vr_setup_select('ipd') );
         vr_setup_createtext(vr_setup_ipd2, get(i_ipd), center, left, 0, -35, #FFFFFF, true, vr_setup_select('ipd') );
 
-        vr_setup_createtext(vr_setup_hmd1, 'VR Headset:', center, right, 0, +35, #FFFFFF, true,
+        vr_setup_createtext(vr_setup_hmd1, '头戴设备:', center, right, 0, +35, #FFFFFF, true,
         vr_setup_select('headset') );
         vr_setup_createtext(vr_setup_hmd2, get(i_headset), center, left, 0, +35, #FFFFFF, true,
         vr_setup_select('headset') );
 
-        vr_setup_createtext(vr_setup_hmd3, 'Customize', center, center, 0, +75, #FFFFFF, true, set(background,true),
+        vr_setup_createtext(vr_setup_hmd3, '自定义', center, center, 0, +75, #FFFFFF, true, set(background,true),
         set(background,false), vr_setup_customize_headset() );
 
 
@@ -394,11 +423,11 @@
         set(background,true), set(background,false), vr_setup_calibration() );
         );
 
-        vr_setup_createtext(vr_setup_sav, 'SAVE', center, center, -200, +225, #FFFFFF, true, set(background,true),
+        vr_setup_createtext(vr_setup_sav, '保存', center, center, -200, +225, #FFFFFF, true, set(background,true),
         set(background,false), vr_setup_save() );
-        vr_setup_createtext(vr_setup_rst, 'RESET', center, center, 0, +225, #FFFFFF, true, set(background,true),
+        vr_setup_createtext(vr_setup_rst, '重置', center, center, 0, +225, #FFFFFF, true, set(background,true),
         set(background,false), vr_setup_reset() );
-        vr_setup_createtext(vr_setup_cls, 'CLOSE', center, center, +200, +225, #FFFFFF, true, set(background,true),
+        vr_setup_createtext(vr_setup_cls, '关闭', center, center, +200, +225, #FFFFFF, true, set(background,true),
         set(background,false), vr_setup_close() );
 
         <!-- and the adjusting buttons -->
@@ -446,11 +475,12 @@
         vr_setup_createtext(vr_setup_cb1, 'GYROSCOPE', center, center, 0, -225, #FFFFFF, false);
         vr_setup_createtext(vr_setup_cb2, 'Place the device on a flat and[br]stable surface and tab calibrate[br]to
         correct a gyroscope drifting.', center, center, 0, -95, #FFFFFF, false, vr_setup_select('screen') );
+
         vr_setup_createtext(vr_setup_cb3, 'CALIBRATE', center, center, 0, +55, #FFFFFF, true, set(background,true),
         set(background,false), vr_setup_do_calibration() );
-        vr_setup_createtext(vr_setup_cb4, 'RESET', center, center, 0, +125, #FFFFFF, true, set(background,true),
+        vr_setup_createtext(vr_setup_cb4, '重置', center, center, 0, +125, #FFFFFF, true, set(background,true),
         set(background,false), webvr.resetcalibration() );
-        vr_setup_createtext(vr_setup_cb5, 'CLOSE', center, center, 0, +225, #FFFFFF, true, set(background,true),
+        vr_setup_createtext(vr_setup_cb5, '关闭', center, center, 0, +225, #FFFFFF, true, set(background,true),
         set(background,false), vr_setup_close_sub_menus() );
 
         vr_setup_createtext(vr_setup_cb6, 'Calibrating...', bottom, center, 0, 40, #FFFFFF, false, null );

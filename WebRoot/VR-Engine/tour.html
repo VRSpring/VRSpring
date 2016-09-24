@@ -7,6 +7,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <meta http-equiv="x-ua-compatible" content="IE=edge"/>
+
+    <link rel="stylesheet" href="/fontAwesome/css/font-awesome.min.css">
     <style>
         @-ms-viewport {
             width: device-width;
@@ -82,7 +84,7 @@
         }
 
         function onTopRightButtonClick() {
-            krpano.call("webvr.enterVR()");
+            window.location.href = "/#/channel";
         }
         function onPreButtonClick() {
             krpano.call("if(skin_settings.thumbs_loop, skin_nextscene_loop(-1), skin_nextscene(-1) );");
@@ -99,22 +101,26 @@
 
         function addTopLeftButton() {
             krpano.call("addlayer(TopLeftButton);");
+            krpano.call("assignstyle(layer[TopLeftButton], 'webvr_button_style_center_small');");
             krpano.call("set(layer[TopLeftButton].keep,true)");
             krpano.call("set(layer[TopLeftButton].align,lefttop);");
-            krpano.call("set(layer[TopLeftButton].url,'../images/full_active.png');");
-            krpano.call("set(layer[TopLeftButton].width,32)");
-            krpano.call("set(layer[TopLeftButton].height,32)");
+            krpano.call("set(layer[TopLeftButton].html,<i class='fa fa-location-arrow'><\/i>);");
+            krpano.call("set(layer[TopLeftButton].background,true);");
+            krpano.call("set(layer[TopLeftButton].backgroundcolor,'0x7c7c7c');");
+            krpano.call("set(layer[TopLeftButton].backgroundalpha,'0.4');");
             krpano.call("set(layer[TopLeftButton].x,20)");
             krpano.call("set(layer[TopLeftButton].y,20)");
             krpano.call("set(layer[TopLeftButton].onclick,js(onTopLeftButtonClick()));");
         }
         function addTopRightButton() {
             krpano.call("addlayer(TopRightButton);");
+            krpano.call("assignstyle(layer[TopRightButton], 'webvr_button_style_center_small');");
             krpano.call("set(layer[TopRightButton].keep,true)");
             krpano.call("set(layer[TopRightButton].align,righttop);");
-            krpano.call("set(layer[TopRightButton].url,'../images/vr.png');");
-            krpano.call("set(layer[TopRightButton].width,32)");
-            krpano.call("set(layer[TopRightButton].height,32)");
+            krpano.call("set(layer[TopRightButton].html,<i class='fa fa-weixin'><\/i>);");
+            krpano.call("set(layer[TopRightButton].background,true);");
+            krpano.call("set(layer[TopRightButton].backgroundcolor,'0x00dd00');");
+            krpano.call("set(layer[TopRightButton].backgroundalpha,'0.4');");
             krpano.call("set(layer[TopRightButton].x,20)");
             krpano.call("set(layer[TopRightButton].y,20)");
             krpano.call("set(layer[TopRightButton].onclick,js(onTopRightButtonClick()));");
@@ -123,12 +129,14 @@
 
         function addCenterButton() {
             krpano.call("addlayer(CenterButton);");
+            krpano.call("assignstyle(layer[CenterButton], 'webvr_button_style_center');");
             krpano.call("set(layer[CenterButton].keep,true)");
             krpano.call("set(layer[CenterButton].edge,center);");
             krpano.call("set(layer[CenterButton].align,center);");
-            krpano.call("set(layer[CenterButton].url,'../images/vr_active.png');");
-            krpano.call("set(layer[CenterButton].width,32)");
-            krpano.call("set(layer[CenterButton].height,32)");
+            krpano.call("set(layer[CenterButton].html,'VR');");
+            krpano.call("set(layer[CenterButton].background,true);");
+            krpano.call("set(layer[CenterButton].backgroundcolor,'0x7c7c7c');");
+            krpano.call("set(layer[CenterButton].backgroundalpha,'0.4');");
             krpano.call("set(layer[CenterButton].x,0)");
             krpano.call("set(layer[CenterButton].y,45%)");
             krpano.call("set(layer[CenterButton].onclick,js(onTopRightButtonClick()));");
@@ -136,12 +144,14 @@
         }
         function addPreButton() {
             krpano.call("addlayer(PreButton);");
+            krpano.call("assignstyle(layer[PreButton], 'webvr_button_style_center_small');");
             krpano.call("set(layer[PreButton].keep,true)");
             krpano.call("set(layer[PreButton].align,left);");
-            krpano.call("set(layer[PreButton].url,'../images/pre.png');");
-            krpano.call("set(layer[PreButton].width,32);");
-            krpano.call("set(layer[PreButton].height,32);");
-            krpano.call("set(layer[PreButton].x,35%);");
+            krpano.call("set(layer[PreButton].html,<i class='fa fa-backward'></i>);");
+            krpano.call("set(layer[PreButton].background,true);");
+            krpano.call("set(layer[PreButton].backgroundcolor,'0x7c7c7c');");
+            krpano.call("set(layer[PreButton].backgroundalpha,'0.4');");
+            krpano.call("set(layer[PreButton].x,30%);");
             krpano.call("set(layer[PreButton].y,45%);");
             krpano.call("set(layer[PreButton].onclick,js(onPreButtonClick()));");
 
@@ -149,12 +159,14 @@
 
         function addNextButton() {
             krpano.call("addlayer(NextButton);");
+            krpano.call("assignstyle(layer[NextButton], 'webvr_button_style_center_small');");
             krpano.call("set(layer[NextButton].keep,true)");
             krpano.call("set(layer[NextButton].align,right);");
-            krpano.call("set(layer[NextButton].url,'../images/next.png');");
-            krpano.call("set(layer[NextButton].width,32);");
-            krpano.call("set(layer[NextButton].height,32);");
-            krpano.call("set(layer[NextButton].x,35%);");
+            krpano.call("set(layer[NextButton].html,<i class='fa fa-forward'></i>);");
+            krpano.call("set(layer[NextButton].background,true);");
+            krpano.call("set(layer[NextButton].backgroundcolor,'0x7c7c7c');");
+            krpano.call("set(layer[NextButton].backgroundalpha,'0.4');");
+            krpano.call("set(layer[NextButton].x,30%);");
             krpano.call("set(layer[NextButton].y,45%);");
             krpano.call("set(layer[NextButton].onclick,js(onNextButtonClick()));");
         }
@@ -163,7 +175,7 @@
         (function addLyer() {
 //            krpano.set('debugmode', true);
 //            krpano.set('showerrors', true);
-            console.log(krpano.get('scene'));
+//            krpano.call('showLog(true);');
             hiddenSystemMenu();
             addTopLeftButton();
             addTopRightButton();
