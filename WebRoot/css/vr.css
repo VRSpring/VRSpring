@@ -205,51 +205,12 @@ body .swiper-slide p {
           transform: translate(-50%, -50%);
   overflow: hidden;
 }
-body .qrcode {
-  display: block;
-  margin: 24px auto 0px;
-  max-width: 100%;
-}
-body .qrcode-link {
-  display: table;
-  margin: 24px auto 16px;
-}
-body .qrcode-link .qrcode {
-  margin: 0;
-}
 body div.wedding-container {
   width: 100%;
 }
 body div.wedding-container p.wedding {
   position: relative;
+  margin: 0;
   padding: 0;
   line-height: 1em;
-  margin: 0;
-}
-body div.wedding-container p.wedding * {
-  max-width: 100%;
-}
-body div.wedding-container p.wedding .qrcode {
-  display: block;
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  -webkit-transform: translate(-50%, 0);
-  transform: translate(-50%, 0);
-  margin: 24px auto 0px;
-  max-width: 100%;
-}
-body div.wedding-container p.wedding .qrcode-link {
-  display: block;
-  margin: 0;
-  padding: 0;
-}
-body div.wedding-container p.wedding .qrcode-link .qrcode {
-  display: block;
-  position: absolute;
-  margin: 24px auto 0px;
-  bottom: 10px;
-  left: 50%;
-  -webkit-transform: translate(-50%, 0);
-  transform: translate(-50%, 0);
 }
