@@ -71,16 +71,9 @@
             passQueryParameters: true
         });
         var krpano = document.getElementById("krpanoSWFObject");
-
-        function showmouseinfo() {
-//            krpano.set('showerrors',true);
-//            krpano.set('xml.url',window.document.location.href)
-//            console.log( krpano.get('xml.url'));
-//            krpano.call("toupper(xml.url);");
-//            console.log( krpano.get('xml.url'));
-        }
         function onTopLeftButtonClick() {
-            krpano.call("switch(plugin[skin_gyro].enabled); if(plugin[skin_gyro].enabled, skin_showmap(false));");
+            history.go(-1);
+//            krpano.call("switch(plugin[skin_gyro].enabled); if(plugin[skin_gyro].enabled, skin_showmap(false));");
         }
         function onCenterButtonClick() {
             krpano.call("webvr.enterVR()");
@@ -99,48 +92,63 @@
         }
         function hiddenSystemMenu() {
             krpano.call("set(layer[skin_layer].visible,false)");
-//            krpano.call("set(layer[skin_splitter_bottom].visible,false)");
-//            krpano.call("set(layer[skin_control_bar].visible,false)");
         }
 
         function addTopLeftButton() {
             krpano.call("addlayer(TopLeftButton);");
-            krpano.call("assignstyle(layer[TopLeftButton], 'webvr_button_style_center_small');");
+            krpano.call("set(layer[TopLeftButton].type,'image')");
             krpano.call("set(layer[TopLeftButton].keep,true)");
             krpano.call("set(layer[TopLeftButton].align,lefttop);");
-            krpano.call("set(layer[TopLeftButton].html,<i class='fa fa-location-arrow'><\/i>);");
+            krpano.call("set(layer[TopLeftButton].url,'/images/back.png');");
             krpano.call("set(layer[TopLeftButton].background,true);");
-            krpano.call("set(layer[TopLeftButton].backgroundcolor,'0x7c7c7c');");
+            krpano.call("set(layer[TopLeftButton].backgroundcolor,'0x00dd00');");
             krpano.call("set(layer[TopLeftButton].backgroundalpha,'0.4');");
+            krpano.call("set(layer[TopLeftButton].width,20px);");
+            krpano.call("set(layer[TopLeftButton].height,20px);");
             krpano.call("set(layer[TopLeftButton].x,20)");
             krpano.call("set(layer[TopLeftButton].y,20)");
             krpano.call("set(layer[TopLeftButton].onclick,js(onTopLeftButtonClick()));");
+//            krpano.call("addlayer(TopLeftButton);");
+//            krpano.call("assignstyle(layer[TopLeftButton], 'webvr_button_style_center_small');");
+//            krpano.call("set(layer[TopLeftButton].keep,true)");
+//            krpano.call("set(layer[TopLeftButton].align,lefttop);");
+//            krpano.call("set(layer[TopLeftButton].html,<i class='fa fa-location-arrow'><\/i>);");
+//            krpano.call("set(layer[TopLeftButton].background,true);");
+//            krpano.call("set(layer[TopLeftButton].backgroundcolor,'0x7c7c7c');");
+//            krpano.call("set(layer[TopLeftButton].backgroundalpha,'0.4');");
+//            krpano.call("set(layer[TopLeftButton].x,20)");
+//            krpano.call("set(layer[TopLeftButton].y,20)");
+//            krpano.call("set(layer[TopLeftButton].onclick,js(onTopLeftButtonClick()));");
         }
         function addTopRightButton() {
             krpano.call("addlayer(TopRightButton);");
-            krpano.call("assignstyle(layer[TopRightButton], 'webvr_button_style_center_small');");
+            krpano.call("set(layer[TopRightButton].type,'image')");
             krpano.call("set(layer[TopRightButton].keep,true)");
             krpano.call("set(layer[TopRightButton].align,righttop);");
-            krpano.call("set(layer[TopRightButton].html,<i class='fa fa-weixin'><\/i>);");
+            krpano.call("set(layer[TopRightButton].url,'/images/share.png');");
             krpano.call("set(layer[TopRightButton].background,true);");
             krpano.call("set(layer[TopRightButton].backgroundcolor,'0x00dd00');");
             krpano.call("set(layer[TopRightButton].backgroundalpha,'0.4');");
+            krpano.call("set(layer[TopRightButton].width,20px);");
+            krpano.call("set(layer[TopRightButton].height,20px);");
             krpano.call("set(layer[TopRightButton].x,20)");
             krpano.call("set(layer[TopRightButton].y,20)");
-            krpano.call("set(layer[TopRightButton].onclick,js(onTopRightButtonClick()));");
+            krpano.call("set(layer[TopRightButton].onclick,js(onTopLeftButtonClick()));");
             krpano.call("set(fullscreen,true);");
         }
 
         function addCenterButton() {
             krpano.call("addlayer(CenterButton);");
-            krpano.call("assignstyle(layer[CenterButton], 'webvr_button_style_center');");
+            krpano.call("set(layer[CenterButton].type,'image')");
             krpano.call("set(layer[CenterButton].keep,true)");
             krpano.call("set(layer[CenterButton].edge,center);");
             krpano.call("set(layer[CenterButton].align,center);");
-            krpano.call("set(layer[CenterButton].html,'VR');");
+            krpano.call("set(layer[CenterButton].url,'/images/cardboard.png');");
             krpano.call("set(layer[CenterButton].background,true);");
             krpano.call("set(layer[CenterButton].backgroundcolor,'0x7c7c7c');");
             krpano.call("set(layer[CenterButton].backgroundalpha,'0.4');");
+            krpano.call("set(layer[CenterButton].width,40px);");
+            krpano.call("set(layer[CenterButton].height,40px);");
             krpano.call("set(layer[CenterButton].x,0)");
             krpano.call("set(layer[CenterButton].y,45%)");
             krpano.call("set(layer[CenterButton].onclick,js(onCenterButtonClick()));");
@@ -148,13 +156,15 @@
         }
         function addPreButton() {
             krpano.call("addlayer(PreButton);");
-            krpano.call("assignstyle(layer[PreButton], 'webvr_button_style_center_small');");
+            krpano.call("set(layer[PreButton].type,'image')");
             krpano.call("set(layer[PreButton].keep,true)");
             krpano.call("set(layer[PreButton].align,left);");
-            krpano.call("set(layer[PreButton].html,<i class='fa fa-backward'></i>);");
+            krpano.call("set(layer[PreButton].url,'/images/pre.png');");
             krpano.call("set(layer[PreButton].background,true);");
             krpano.call("set(layer[PreButton].backgroundcolor,'0x7c7c7c');");
             krpano.call("set(layer[PreButton].backgroundalpha,'0.4');");
+            krpano.call("set(layer[PreButton].width,20px);");
+            krpano.call("set(layer[PreButton].height,20px);");
             krpano.call("set(layer[PreButton].x,30%);");
             krpano.call("set(layer[PreButton].y,45%);");
             krpano.call("set(layer[PreButton].onclick,js(onPreButtonClick()));");
@@ -163,13 +173,15 @@
 
         function addNextButton() {
             krpano.call("addlayer(NextButton);");
-            krpano.call("assignstyle(layer[NextButton], 'webvr_button_style_center_small');");
+            krpano.call("set(layer[NextButton].type,'image')");
             krpano.call("set(layer[NextButton].keep,true)");
             krpano.call("set(layer[NextButton].align,right);");
-            krpano.call("set(layer[NextButton].html,<i class='fa fa-forward'></i>);");
+            krpano.call("set(layer[NextButton].url,'/images/next.png');");
             krpano.call("set(layer[NextButton].background,true);");
             krpano.call("set(layer[NextButton].backgroundcolor,'0x7c7c7c');");
             krpano.call("set(layer[NextButton].backgroundalpha,'0.4');");
+            krpano.call("set(layer[NextButton].width,20px);");
+            krpano.call("set(layer[NextButton].height,20px);");
             krpano.call("set(layer[NextButton].x,30%);");
             krpano.call("set(layer[NextButton].y,45%);");
             krpano.call("set(layer[NextButton].onclick,js(onNextButtonClick()));");
@@ -177,9 +189,6 @@
 
 
         (function addLyer() {
-//            krpano.set('debugmode', true);
-//            krpano.set('showerrors', true);
-//            krpano.call('showLog(true);');
             hiddenSystemMenu();
             addTopLeftButton();
             addTopRightButton();

@@ -4,6 +4,22 @@ body {
 body * {
   box-sizing: border-box;
 }
+
+body .text-right {
+  text-align: right;
+}
+
+body .weui-col-10 {
+  width: 10%;
+}
+
+body .weui-col-20 {
+  width: 20%;
+}
+
+body .weui-col-30 {
+  width: 30%;
+}
 body .hidden {
   display: none;
 }
@@ -18,9 +34,11 @@ body .weui_btn_black {
 }
 body header {
   height: 50px;
+  border-bottom: 1px solid green;
+  margin-bottom: 2px;
 }
 body header .logo {
-  width: 100%;
+  height: 3em;
 }
 body header div.h-center {
   height: 100%;
@@ -39,6 +57,25 @@ body header div.h-center {
       -ms-flex-direction: row;
           flex-direction: row;
   overflow: auto;
+}
+
+body header div.h-center a {
+  font-size: 1.2em;
+  color: green;
+}
+
+body header div.h-center i {
+  display: inline-block;
+  font-size: 1.7em;
+  color: green;
+}
+
+body header div.h-center a:visited {
+  color: green;
+}
+
+body header div.h-center a:link {
+  color: green;
 }
 body .bg-black {
   background: black;

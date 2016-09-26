@@ -10,18 +10,23 @@
     <link rel="stylesheet" href="css/weui.min.css">
     <link rel="stylesheet" href="css/jquery-weui.css">
     <link rel="stylesheet" href="css/vr.css">
+    <link rel="stylesheet" href="/fontAwesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ionic/css/ionicons.min.css">
 </head>
 
 <body ontouchstart ng-app="com.vrspring.vr" ng-cloak>
 <div ng-controller="mainController" ng-cloak>
-    <header class='bg-primary'>
+    <header class=''>
         <div class="weui-row weui-no-gutter h-center">
-            <div class="weui-col-20">
-                <img src="./images/logo.png" class='logo'/>
+            <div class="weui-col-20 text-center">
+                <img src="./images/logo-4.png" class='logo'/>
             </div>
             <div class="weui-col-20 text-center"><a ui-sref="home">首页</a></div>
             <div class="weui-col-20 text-center"><a ui-sref="channel">频道</a></div>
             <div class="weui-col-20 text-center"><a ui-sref="about">关于</a></div>
+            <div class="weui-col-20 text-center">
+                <i class="ion ion-ios-person-outline"></i>
+            </div>
         </div>
     </header>
     <div ui-view="">
