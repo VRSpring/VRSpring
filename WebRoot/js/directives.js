@@ -19,18 +19,21 @@ vr.directive('endRepeat', ['$timeout', function ($timeout) {
                 'Q': 'Quartile',
                 'H': 'High'
             },
-            draw = function (context, qr, modules, tile) {
-                for (var row = 0; row < modules; row++) {
-                    for (var col = 0; col < modules; col++) {
-                        var w = (Math.ceil((col + 1) * tile) - Math.floor(col * tile)),
-                            h = (Math.ceil((row + 1) * tile) - Math.floor(row * tile));
+            drawImage = function (context, img, sw, sh, w, h) {
+                context.drawImage(img, 0, 0, sw, sh, 0, 0, w, h);
+            }
+        draw = function (context, startx, starty, qr, modules, tile) {
+            for (var row = 0; row < modules; row++) {
+                for (var col = 0; col < modules; col++) {
+                    var w = (Math.ceil((col + 1) * tile) - Math.floor(col * tile)),
+                        h = (Math.ceil((row + 1) * tile) - Math.floor(row * tile));
 
-                        context.fillStyle = qr.isDark(row, col) ? '#000' : '#fff';
-                        context.fillRect(Math.round(col * tile),
-                            Math.round(row * tile), w, h);
-                    }
+                    context.fillStyle = qr.isDark(row, col) ? '#000' : '#fff';
+                    context.fillRect(startx + Math.round(col * tile),
+                        starty + Math.round(row * tile), w, h);
                 }
-            };
+            }
+        };
 
         return {
             restrict: 'E',
@@ -52,7 +55,7 @@ vr.directive('endRepeat', ['$timeout', function ($timeout) {
                     modules,
                     tile,
                     qr,
-                    $img,
+                    img='<img src="">',
                     setVersion = function (value) {
                         version = Math.max(1, Math.min(parseInt(value, 10), 40)) || 5;
                     },
@@ -81,13 +84,18 @@ vr.directive('endRepeat', ['$timeout', function ($timeout) {
                     setSize = function (value) {
                         size = parseInt(value, 10) || modules * 2;
                         tile = size / modules;
-                        canvas.width = canvas.height = size;
+                    },
+                    setCanvasSize = function (width, height) {
+                        canvas.width = width
+                        canvas.height = height;
                     },
                     render = function () {
+                        var w = $window.innerWidth;
+                        var h = Math.round($window.innerWidth / $bg.width * $bg.height);
+                        setCanvasSize(w, h);
                         if (!qr) {
                             return;
                         }
-
                         if (error) {
                             if (link) {
                                 link.removeAttribute('download');
@@ -102,50 +110,38 @@ vr.directive('endRepeat', ['$timeout', function ($timeout) {
                             scope.$emit('qrcode:error', error);
                             return;
                         }
-
-                        if (download) {
+                        if (href) {
                             domElement.download = 'qrcode.png';
                             domElement.title = 'Download QR code';
-                        }
-
-                        // if (canvas2D) {
-                        //     draw(context, qr, modules, tile);
-                        //
-                        //     if (download) {
-                        //         domElement.href = canvas.toDataURL('image/png');
-                        //         return;
-                        //     }
-                        // } else {
-                        //     domElement.innerHTML = qr.createImgTag(tile, 0);
-                        //     $img = element.find('img');
-                        //     $img.addClass('qrcode');
-                        //
-                        //     if (download) {
-                        //         domElement.href = $img[0].src;
-                        //         return;
-                        //     }
-                        // }
-
-                        domElement.innerHTML = qr.createImgTag(tile, 0);
-                        $img = element.find('img');
-                        $img.addClass('qrcode');
-
-                        if (download) {
-                            domElement.href = $img[0].src;
-                            return;
-                        }
-
-                        if (href) {
                             domElement.href = href;
                         }
-                    };
+                        if (canvas2D) {
+                            drawImage(context, $bg, $bg.width, $bg.height, w, h);
+                            var startx = 0.5 * (w - modules * tile);
+                            var starty = (h - modules * tile) - 10;
+                            draw(context, startx, starty, qr, modules, tile);
+                            if (download) {
+                                $(domElement).find('img')[0].src = canvas.toDataURL('image/png');
+                                canvas.remove();
+                                return;
+                            }
+                        }
 
+                    };
                 if (link) {
                     link.className = 'qrcode-link';
                     $canvas.wrap(link);
+                    if(download){
+                        $canvas.parent().prepend(img);
+                    }
                     domElement = domElement.firstChild;
                 }
-
+                $bg = new Image;
+                $bg.src = attrs.bg;
+                $bg.onload = function () {
+                    setSize(size);
+                    render();
+                }
                 setVersion(attrs.version);
                 setErrorCorrectionLevel(attrs.errorCorrectionLevel);
                 setSize(attrs.size);
