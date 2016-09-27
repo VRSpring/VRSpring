@@ -17,20 +17,22 @@
 <body ontouchstart ng-app="com.vrspring.vr" ng-cloak>
 <div ng-controller="mainController" ng-cloak>
     <header class=''>
-        <div class="weui-row weui-no-gutter h-center">
+        <div class="weui-row weui-no-gutter">
             <div class="weui-col-20 text-center">
-                <img src="./images/logo-4.png" class='logo'/>
+                <a href=""><img src="./images/icon.png"/></a>
             </div>
-            <div class="weui-col-20 text-center"><a ui-sref="home">首页</a></div>
-            <div class="weui-col-20 text-center"><a ui-sref="channel">频道</a></div>
-            <div class="weui-col-20 text-center"><a ui-sref="about">关于</a></div>
+            <div class="weui-col-60 text-center"></div>
             <div class="weui-col-20 text-center">
-                <i class="ion ion-ios-person-outline"></i>
+                <a href=""><i class="ion ion-ios-person-outline"></i></a>
             </div>
         </div>
     </header>
     <div ui-view="">
     </div>
+</div>
+
+<div class="weui-row">
+    <p class='footer'> © 2016 VRSpring 粤ICP备16087767号</p>
 </div>
 <script src="js/lib/jquery-2.1.4.min.js" type="text/javascript"></script>
 <script src="js/lib/jquery-weui.min.js" type="text/javascript"></script>
