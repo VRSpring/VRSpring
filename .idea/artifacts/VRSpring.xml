@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="VRSpring">
+    <output-path>$PROJECT_DIR$/classes/artifacts/VRSpring</output-path>
+    <root id="archive" name="VRSpring.war">
+      <element id="artifact" artifact-name="VRSpring:war exploded" />
+    </root>
+  </artifact>
+</component>

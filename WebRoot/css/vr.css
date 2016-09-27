@@ -33,14 +33,13 @@ body header {
   padding: 5px 0;
   padding-bottom: 0;
 }
-
 body header img {
   display: inline-block;
   margin: 5px auto;
+  margin-bottom: 0px;
   padding: 0;
   height: 30px;
 }
-
 body header i {
   display: inline-block;
   line-height: 40px;
@@ -217,7 +216,6 @@ body div.wedding-container p.wedding {
   padding: 0;
   line-height: 1em;
 }
-
 body p.footer {
   text-align: center;
   padding: 10px 0;

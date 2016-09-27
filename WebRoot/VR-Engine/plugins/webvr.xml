@@ -394,20 +394,20 @@
 
         <!-- create the text elements -->
         set(vr_setup_text_parent, 'vr_setup_m1');
-        vr_setup_createtext(vr_setup_title, '<i class='fa fa-android'>VR参数设置</i>', center, center, 0, -225, #FFFFFF,
+        vr_setup_createtext(vr_setup_title, 'VR参数设置', center, center, 0, -225, #FFFFFF,
         false);
 
         vr_setup_createtext(vr_setup_dvn1, '设备类型:', center, right, 0, -145, #FFFFFF, true, vr_setup_select('screen')
         );
         vr_setup_createtext(vr_setup_dvn2, get(i_devicename), center, left, 0, -145, get(sizcol), true,
         vr_setup_select('screen') );
-        vr_setup_createtext(vr_setup_siz1, '屏幕尺寸:', center, right, 0, -105, #FFFFFF, true,
+        vr_setup_createtext(vr_setup_siz1, '屏幕尺寸:', center, right, 0, -85, #FFFFFF, true,
         vr_setup_select('screen') );
-        vr_setup_createtext(vr_setup_siz2, get(i_screensize), center, left, 0, -105, get(sizcol), true,
+        vr_setup_createtext(vr_setup_siz2, get(i_screensize), center, left, 0, -85, get(sizcol), true,
         vr_setup_select('screen') );
 
-        vr_setup_createtext(vr_setup_ipd1, '瞳距:', center, right, 0, -35, #FFFFFF, true, vr_setup_select('ipd') );
-        vr_setup_createtext(vr_setup_ipd2, get(i_ipd), center, left, 0, -35, #FFFFFF, true, vr_setup_select('ipd') );
+        vr_setup_createtext(vr_setup_ipd1, '瞳距:', center, right, 0, -25, #FFFFFF, true, vr_setup_select('ipd') );
+        vr_setup_createtext(vr_setup_ipd2, get(i_ipd), center, left, 0, -25, #FFFFFF, true, vr_setup_select('ipd') );
 
         vr_setup_createtext(vr_setup_hmd1, 'VR设备:', center, right, 0, +35, #FFFFFF, true,
         vr_setup_select('headset') );
