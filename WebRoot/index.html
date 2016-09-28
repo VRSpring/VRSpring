@@ -16,15 +16,31 @@
 
 <body ontouchstart ng-app="com.vrspring.vr" ng-cloak>
 <div ng-controller="mainController" ng-cloak>
-    <header class=''>
+    <header>
         <div class="weui-row weui-no-gutter">
             <div class="weui-col-20 text-center">
-                <a href=""><img src="./images/icon.png"/></a>
+                <a href=""><img src="./images/icon-no-word.png"/></a>
             </div>
-            <div class="weui-col-60 text-center"></div>
+            <div class="weui-col-60 text-center">
+                <div class="tab-container">
+                    <div class="tab">
+                        <span ng-click="toggle('hot')"
+                              ng-class="{true: 'tab-box left active', false: 'tab-box left'}[index=='hot']"><i
+                                class="fa fa-list-ol"></i>热门</span>
+                        <span ng-click="toggle('category')"
+                              ng-class="{true: 'tab-box right active', false: 'tab-box right'}[index=='category']"><i
+                                class="fa fa-search"></i>分类</span>
+                    </div>
+                </div>
+            </div>
             <div class="weui-col-20 text-center">
-                <a href=""><i class="ion ion-ios-person-outline"></i></a>
+                <a href=""><img src="/images/user.png"/></a>
             </div>
+        </div>
+
+        <div class="tags" ng-show="index=='category'">
+            <span ng-class="{true: 'tag active', false: 'tag'}[$index==0]" ng-repeat="cat in category"
+                  value="{{cat.id}}">{{cat.type}}</span>
         </div>
     </header>
     <div ui-view="">

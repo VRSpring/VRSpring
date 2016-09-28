@@ -1,3 +1,3 @@
-vr.controller('channelController', function ($scope, $http) {
-    $scope.url = 'www.vrspring.com';
+vr.controller('channelController', function ($scope, $http, $rougeParams) {
+    $scope.url = "http://vrspring.com";
 });

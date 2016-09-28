@@ -1,3 +1,4 @@
+@primary-color: #56bb36;
 body {
     min-height: 100vh;
     * {
@@ -42,7 +43,70 @@ body {
             display: inline-block;
             line-height: 40px;
             font-size: 40px;
-            color: green;
+            color: @primary-color;
+        }
+        .tab-container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0;
+            .tab {
+                display: inline-block;
+                text-align: center;
+                box-sizing: border-box;
+                margin: 6px auto;
+                font-size: 0;
+                border: 1px solid @primary-color;
+                border-radius: 16px;
+                .tab-box {
+                    display: inline-block;
+                    margin: 0 auto;
+                    color: @primary-color;
+                    padding: 2px 20px;
+                    text-align: center;
+                    i {
+                        margin-right: 2px;
+                    }
+                }
+            }
+            .tab > .left {
+                border-bottom-left-radius: 15px;
+                border-top-left-radius: 15px;
+                font-size: 14px;
+            }
+            .tab > .right {
+                border-bottom-right-radius: 15px;
+                border-top-right-radius: 15px;
+                font-size: 14px;
+            }
+            .tab > .active {
+                border-radius: 15px;
+                background: @primary-color;
+                color: white;
+                i {
+                    color: white;
+                }
+            }
+        }
+        div.tags {
+            width: 100%;
+            padding: 3px;
+            text-align: left;
+            .tag {
+                display: inline-block;
+                font-size: 12px;
+                color: @primary-color;
+                border: 1px solid #bbbbbb;
+                border-radius: 16px;
+                padding: 0 15px;
+                margin: 2px 5px;
+                text-align: center;
+            }
+            > .active {
+                color: white;
+                background: @primary-color;
+                border: 1px solid @primary-color;
+            }
         }
     }
     .bg-black {
