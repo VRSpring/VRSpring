@@ -1,9 +1,9 @@
-<div class="swiper-container">
+﻿<div class="swiper-container">
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
         <!-- Slides -->
         <div class="swiper-slide" ng-repeat="banner in banners" end-repeat>
-            <a href="">
+            <a href="{{banner.detailUrl}}">
                 <img src="{{banner.url}}"/>
                 <p>{{banner.name}}</p>
             </a>
