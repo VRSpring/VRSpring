@@ -6,6 +6,8 @@ import com.vrspring.Bean.HomeBean;
 import com.vrspring.Bean.IndexBean;
 import com.vrspring.sao.TaeBcFileSAO;
 import com.vrspring.util.ConfigConstants;
+import com.vrspring.util.DateComparator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,14 +38,17 @@ public class ImageController
 		List<MediaDir> listMeDirs = taeBcFileSAO.getDirs("/"
 				+ ConfigConstants.IMAGE_DIRECTORY, 1, 10);
 		List<IndexBean> list = new ArrayList<IndexBean>();
+		// 从所有VR资源当中随机选取BANNER_NUM个图片放入banner中
+		List<Banner> banners = new ArrayList<Banner>();
 		if (listMeDirs != null && listMeDirs.size() > 0)
 		{
+			Collections.sort(listMeDirs,new DateComparator());
 			for (MediaDir dir : listMeDirs)
 			{
 				String panosPath = dir.getDir() + "/panos";
 				String path = ConfigConstants.IMAGE_URL
 						+ taeBcFileSAO.getDirs(panosPath, 1, 10).get(0)
-								.getDir() + "/thumb.jpg";
+								.getDir() + "/vr/pano_f.jpg";
 				String tourxml = ConfigConstants.IMAGE_URL + "/" + dir.getDir()
 						+ "/tour.xml";
 				String name = dir.getName();
@@ -53,21 +58,13 @@ public class ImageController
 				item.setPath(path);
 				item.setTourxml(tourxml);
 				list.add(item);
-			}
-		}
-
-		if (list.size() > 0) {
-			// 从所有VR资源当中随机选取BANNER_NUM个图片放入banner中
-			List banners = new ArrayList<Banner>();
-			Set<Integer> set = new HashSet<Integer>();
-			while (set.size() < ConfigConstants.BANNER_NUM)
-			{
-				int index = (new Random().nextInt(list.size()));
-				if (set.add(index)) {
-					banners.add(new Banner(list.get(index).getPath(), list.get(
-							index).getName()));
+				if (banners.size() < ConfigConstants.BANNER_NUM)
+				{
+					String detailUrl = item.getDir()+"?tourxml="+item.getTourxml()+"&title="+item.getName();
+					banners.add(new Banner(item.getPath(), item.getName(),detailUrl));
 				}
 			}
+
 			homeBean.setBanners(banners);
 			homeBean.setList(list);
 		}
