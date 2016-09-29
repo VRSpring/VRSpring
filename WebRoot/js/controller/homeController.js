@@ -10,7 +10,8 @@ vr.controller('homeController', function ($scope, $http) {
         });
     });
 
-
+    //开启动画
+    $scope.$parent.loading=true;
     $http.post("image/list", {}).success(function (data) {
         $scope.banners = data.banners;
         var list = data.list;
@@ -28,6 +29,8 @@ vr.controller('homeController', function ($scope, $http) {
                 item = {};
             }
             $scope.list.push(item);
+            //关闭动画
+            $scope.$parent.loading=false;
         }
     });
 });

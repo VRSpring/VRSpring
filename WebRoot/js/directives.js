@@ -90,8 +90,8 @@ vr.directive('endRepeat', ['$timeout', function ($timeout) {
                         canvas.height = height;
                     },
                     render = function () {
-                        var w = $window.innerWidth;
-                        var h = Math.round($window.innerWidth / $bg.width * $bg.height);
+                        var w = $bg.width;
+                        var h = $bg.height;
                         setCanvasSize(w, h);
                         if (!qr) {
                             return;
@@ -118,7 +118,7 @@ vr.directive('endRepeat', ['$timeout', function ($timeout) {
                         if (canvas2D) {
                             drawImage(context, $bg, $bg.width, $bg.height, w, h);
                             var startx = 0.5 * (w - modules * tile);
-                            var starty = (h - modules * tile) - 10;
+                            var starty = (h - modules * tile) -   Math.floor(h*0.03);
                             draw(context, startx, starty, qr, modules, tile);
                             if (download) {
                                 $(domElement).find('img')[0].src = canvas.toDataURL('image/png');
@@ -139,6 +139,7 @@ vr.directive('endRepeat', ['$timeout', function ($timeout) {
                 $bg = new Image;
                 $bg.src = attrs.bg;
                 $bg.onload = function () {
+                    size=Math.floor($bg.width*0.3);
                     setSize(size);
                     render();
                 }

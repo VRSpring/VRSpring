@@ -19,7 +19,7 @@
     <header>
         <div class="weui-row weui-no-gutter">
             <div class="weui-col-20 text-center">
-                <a href=""><img src="./images/icon-no-word.png"/></a>
+                <a href=""><img src="./images/logo-300.png"/></a>
             </div>
             <div class="weui-col-60 text-center">
                 <div class="tab-container">
@@ -39,10 +39,29 @@
         </div>
 
         <div class="tags" ng-show="index=='category'">
-            <span ng-class="{true: 'tag active', false: 'tag'}[$index==0]" ng-repeat="cat in category"
+            <span ng-click="$parent.typeChange(cat.id)" ng-class="{true: 'tag active', false: 'tag'}[cat.id==$parent.select_type]" ng-repeat="cat in category"
                   value="{{cat.id}}">{{cat.type}}</span>
         </div>
     </header>
+
+
+    <div id="loading" ng-show="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+                <div class="object" id="object_four"></div>
+                <div class="object" id="object_five"></div>
+                <div class="object" id="object_six"></div>
+                <div class="object" id="object_seven"></div>
+                <div class="object" id="object_eight"></div>
+                <div class="object" id="object_big">
+                    <span>加载中...</span>
+                </div>
+            </div>
+        </div>
+    </div>
     <div ui-view="">
     </div>
 </div>
