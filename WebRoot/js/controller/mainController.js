@@ -3,7 +3,6 @@ vr.controller('mainController', function ($scope, $http, $state, $dictionary) {
     $scope.index = 'hot';
     $scope.category = $dictionary.category;
     $scope.select_type = '1';
-    $scope.loading=false;
 
     $scope.toggle = function (class_new) {
         $scope.index = class_new;
