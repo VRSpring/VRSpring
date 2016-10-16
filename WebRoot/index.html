@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <title>VRSpring</title>
+    <meta name="description" content="we_ui">
+    <link rel="stylesheet" href="css/weui.min.css">
+    <link rel="stylesheet" href="css/jquery-weui.css">
+    <link rel="stylesheet" href="css/vr.css">
+    <link rel="stylesheet" href="/fontAwesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/ionic/css/ionicons.min.css">
+</head>
+
+<body ontouchstart ng-app="com.vrspring.vr" ng-cloak>
+<div ng-controller="mainController" ng-cloak>
+    <header>
+        <div class="weui-row weui-no-gutter">
+            <div class="weui-col-20 text-center">
+                <a href=""><img class='logo' src="./images/logo-300.png"/></a>
+            </div>
+            <div class="weui-col-60 text-center">
+                <div class="tab-container">
+                    <div class="tab">
+                        <span ng-click="toggle('hot')"
+                              ng-class="{true: 'tab-box left active', false: 'tab-box left'}[index=='hot']"><i
+                                class="fa fa-list-ol"></i>热门</span>
+                        <span ng-click="toggle('category')"
+                              ng-class="{true: 'tab-box right active', false: 'tab-box right'}[index=='category']"><i
+                                class="fa fa-search"></i>分类</span>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-col-20 text-center">
+                <a href=""><img src="/images/user.png"/></a>
+            </div>
+        </div>
+
+        <div class="tags" ng-show="index=='category'">
+            <span ng-click="$parent.typeChange(cat.id)" ng-class="{true: 'tag active', false: 'tag'}[cat.id==$parent.select_type]" ng-repeat="cat in category"
+                  value="{{cat.id}}">{{cat.type}}</span>
+        </div>
+    </header>
+
+    <div ui-view="">
+    </div>
+</div>
+<script src="js/lib/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="js/lib/jquery-weui.min.js" type="text/javascript"></script>
+<script src="js/lib/angular.min.js" type="text/javascript"></script>
+<script src="js/lib/angular-ui-router.min.js" type="text/javascript"></script>
+<script src="js/lib/fastclick.min.js" type="text/javascript"></script>
+<script src="js/lib/swiper.min.js" type="text/javascript"></script>
+<script src="js/lib/qrcode.min.js" type="text/javascript"></script>
+<script src="js/lib/qrcode_UTF8.min.js" type="text/javascript"></script>
+<script src="js/init.js" type="text/javascript"></script>
+<script src="js/directives.js" type="text/javascript"></script>
+<script src="js/router.js" type="text/javascript"></script>
+<script type="text/javascript" src='js/controller/mainController.js'></script>
+<script type="text/javascript" src='js/controller/homeController.js'></script>
+<script type="text/javascript" src='js/controller/aboutController.js'></script>
+<script type="text/javascript" src='js/controller/channelController.js'></script>
+</body>
+
+</html>

@@ -1,0 +1,285 @@
+@primary-color: #56bb36;
+body {
+  min-height: 100vh;
+  * {
+    box-sizing: border-box;
+  }
+  .text-right {
+    text-align: right;
+  }
+  .weui-col-10 {
+    width: 10%;
+  }
+  .weui-col-20 {
+    width: 20%;
+  }
+  .weui-col-30 {
+    width: 30%;
+  }
+  .hidden {
+    display: none;
+  }
+  .text-center {
+    text-align: center;
+  }
+  p {
+    font-size: 14px;
+  }
+  .weui_btn_black {
+    background: black;
+  }
+  header {
+    width: 100%;
+    padding: 5px 0;
+    padding-bottom: 0;
+    img {
+      display: inline-block;
+      margin: 5px auto;
+      margin-bottom: 0px;
+      padding: 3px;
+      height: 30px;
+    }
+    img.logo{
+      padding: 6px;
+    }
+    i {
+      display: inline-block;
+      line-height: 40px;
+      font-size: 40px;
+      color: @primary-color;
+    }
+    .tab-container {
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0;
+      .tab {
+        display: inline-block;
+        text-align: center;
+        box-sizing: border-box;
+        margin: 6px auto;
+        font-size: 0;
+        border: 1px solid @primary-color;
+        border-radius: 16px;
+        .tab-box {
+          display: inline-block;
+          margin: 0 auto;
+          color: @primary-color;
+          padding: 2px 20px;
+          text-align: center;
+          i {
+            margin-right: 2px;
+          }
+        }
+      }
+      .tab > .left {
+        border-bottom-left-radius: 15px;
+        border-top-left-radius: 15px;
+        font-size: 14px;
+      }
+      .tab > .right {
+        border-bottom-right-radius: 15px;
+        border-top-right-radius: 15px;
+        font-size: 14px;
+      }
+      .tab > .active {
+        border-radius: 15px;
+        background: @primary-color;
+        color: white;
+        i {
+          color: white;
+        }
+      }
+    }
+    div.tags {
+      width: 100%;
+      padding: 3px;
+      text-align: left;
+      .tag {
+        display: inline-block;
+        font-size: 12px;
+        color: @primary-color;
+        border: 1px solid #bbbbbb;
+        border-radius: 16px;
+        padding: 0 15px;
+        margin: 2px 5px;
+        text-align: center;
+      }
+      > .active {
+        color: white;
+        background: @primary-color;
+        border: 1px solid @primary-color;
+      }
+    }
+  }
+  .bg-black {
+    background: black;
+  }
+  div.content {
+    height: 100%;
+    div.v-center {
+      height: 100%;
+      display: -webkit-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow: auto;
+      img {
+        width: 100%;
+      }
+      .btns-top {
+        position: absolute;
+        top: 20px;
+        left: 15px;
+        .btn-circle {
+          width: 2.7em;
+          height: 2.7em;
+          font-size: 14px;
+          padding: 0.2em;
+          margin: 0;
+          border: 0;
+          display: inline-block;
+          border-radius: 50%;
+        }
+      }
+      .btns-bottom {
+        position: absolute;
+        bottom: 20px;
+        right: 15px;
+        .btn-circle {
+          width: 2.7em;
+          height: 2.7em;
+          font-size: 14px;
+          padding: 0.2em;
+          border: 0;
+          margin: 0;
+          display: inline-block;
+          border-radius: 50%;
+        }
+      }
+    }
+    .weui-row {
+      .weui-col-50 {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        p.desc {
+          position: absolute;
+          color: #000;
+          bottom: 5px;
+          left: 0px;
+          right: 0px;
+          color: white;
+          padding-left: 5px;
+          padding-right: 5px;
+          text-align: center;
+        }
+        p.desc:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          background: hsla(0, 50%, 100%, 0.3);
+        }
+      }
+    }
+    article {
+      .msg {
+        padding: 0;
+        margin-top: 10px;
+        text-align: center;
+        .msg_title {
+          margin-bottom: 5px;
+          font-weight: 400;
+          font-size: 20px;
+        }
+        .weui_msg_desc {
+          font-size: 14px;
+          color: #888;
+        }
+      }
+    }
+    .title {
+      font-weight: bold;
+      font-size: 30px;
+    }
+    .image-middle {
+      max-width: 35%;
+      margin: 0 auto;
+      display: block;
+    }
+    div.h-center {
+      width: 100%;
+      display: -webkit-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      overflow: auto;
+      img {
+        width: 100%;
+      }
+    }
+    .video-left,
+    img.img-left {
+      box-sizing: border-box;
+      width: 100%;
+      padding-top: 10px;
+      padding-left: 10px;
+      padding-right: 5px;
+    }
+    .video-right,
+    img.img-right {
+      box-sizing: border-box;
+      width: 100%;
+      padding-top: 10px;
+      padding-left: 5px;
+      padding-right: 10px;
+    }
+  }
+  .swiper-container {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 10px;
+    z-index: 1;
+  }
+  .swiper-container img {
+    display: block;
+    width: 100%;
+  }
+  .swiper-slide {
+    p {
+      display: block;
+      position: absolute;
+      text-align: center;
+      bottom: 10px;
+      left: 50%;
+      color: white;
+      font-size: 12px;
+      transform: translate(-50%, -50%);
+      overflow: hidden;
+    }
+  }
+  div.wedding-container {
+    width: 100%;
+    p.wedding {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      line-height: 1em;
+      * {
+        max-width: 100%;
+      }
+    }
+  }
+  p.footer {
+    text-align: center;
+    padding: 10px 0;
+    margin: auto;
+    color: #999;
+    font-size: 12px;
+  }
+}

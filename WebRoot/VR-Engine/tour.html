@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>VRSpring之家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="IE=edge"/>
+
+    <link rel="stylesheet" href="/fontAwesome/css/font-awesome.min.css">
+    <style>
+        @-ms-viewport {
+            width: device-width;
+        }
+
+        @media only screen and (min-device-width: 800px) {
+            html {
+                overflow: hidden;
+            }
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            color: #FFFFFF;
+            background-color: #000000;
+        }
+    </style>
+    <script>
+        var LocString = String(window.document.location.href);
+        function GetParamString(str) {
+            var rs = new RegExp("(^|)" + str + "=([^&]*)(&|$)", "gi").exec(LocString), tmp;
+            if (tmp = rs) {
+                return decodeURIComponent(tmp[2]);
+            }
+            return "";
+        }
+        document.title = "VRSpring之家-" + GetParamString("title");
+    </script>
+</head>
+<body>
+
+<script src="tour.js"></script>
+
+<div id="pano" style="width:100%;height:100%;">
+    <noscript>
+        <table style="width:100%;height:100%;">
+            <tr style="vertical-align:middle;">
+                <td>
+                    <div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/></div>
+                </td>
+            </tr>
+        </table>
+    </noscript>
+    <script>
+        embedpano({
+            swf: "tour.swf",
+            xml: GetParamString("tourxml"),
+            target: "pano",
+            html5: "auto",
+            mobilescale: 1.0,
+            passQueryParameters: true
+        });
+        var krpano = document.getElementById("krpanoSWFObject");
+        function onTopLeftButtonClick() {
+            history.go(-1);
+//            krpano.call("switch(plugin[skin_gyro].enabled); if(plugin[skin_gyro].enabled, skin_showmap(false));");
+        }
+        function onCenterButtonClick() {
+            krpano.call("webvr.enterVR()");
+        }
+
+
+        function onTopRightButtonClick() {
+            window.location.href = "/#/channel";
+        }
+        function onPreButtonClick() {
+            krpano.call("if(skin_settings.thumbs_loop, skin_nextscene_loop(-1), skin_nextscene(-1) );");
+        }
+
+        function onNextButtonClick() {
+            krpano.call("if(skin_settings.thumbs_loop, skin_nextscene_loop(+1), skin_nextscene(+1) );");
+        }
+        function hiddenSystemMenu() {
+            krpano.call("set(layer[skin_layer].visible,false)");
+        }
+
+        function addTopLeftButton() {
+            krpano.call("addlayer(TopLeftButton);");
+            krpano.call("set(layer[TopLeftButton].type,'image')");
+            krpano.call("set(layer[TopLeftButton].keep,true)");
+            krpano.call("set(layer[TopLeftButton].align,lefttop);");
+            krpano.call("set(layer[TopLeftButton].url,'/images/back.png');");
+            krpano.call("set(layer[TopLeftButton].background,true);");
+            krpano.call("set(layer[TopLeftButton].backgroundcolor,'0x00dd00');");
+            krpano.call("set(layer[TopLeftButton].backgroundalpha,'0.4');");
+            krpano.call("set(layer[TopLeftButton].width,20px);");
+            krpano.call("set(layer[TopLeftButton].height,20px);");
+            krpano.call("set(layer[TopLeftButton].x,20)");
+            krpano.call("set(layer[TopLeftButton].y,20)");
+            krpano.call("set(layer[TopLeftButton].onclick,js(onTopLeftButtonClick()));");
+//            krpano.call("addlayer(TopLeftButton);");
+//            krpano.call("assignstyle(layer[TopLeftButton], 'webvr_button_style_center_small');");
+//            krpano.call("set(layer[TopLeftButton].keep,true)");
+//            krpano.call("set(layer[TopLeftButton].align,lefttop);");
+//            krpano.call("set(layer[TopLeftButton].html,<i class='fa fa-location-arrow'><\/i>);");
+//            krpano.call("set(layer[TopLeftButton].background,true);");
+//            krpano.call("set(layer[TopLeftButton].backgroundcolor,'0x7c7c7c');");
+//            krpano.call("set(layer[TopLeftButton].backgroundalpha,'0.4');");
+//            krpano.call("set(layer[TopLeftButton].x,20)");
+//            krpano.call("set(layer[TopLeftButton].y,20)");
+//            krpano.call("set(layer[TopLeftButton].onclick,js(onTopLeftButtonClick()));");
+        }
+        function addTopRightButton() {
+            krpano.call("addlayer(TopRightButton);");
+            krpano.call("set(layer[TopRightButton].type,'image')");
+            krpano.call("set(layer[TopRightButton].keep,true)");
+            krpano.call("set(layer[TopRightButton].align,righttop);");
+            krpano.call("set(layer[TopRightButton].url,'/images/share.png');");
+            krpano.call("set(layer[TopRightButton].background,true);");
+            krpano.call("set(layer[TopRightButton].backgroundcolor,'0x00dd00');");
+            krpano.call("set(layer[TopRightButton].backgroundalpha,'0.4');");
+            krpano.call("set(layer[TopRightButton].width,30px);");
+            krpano.call("set(layer[TopRightButton].height,30px);");
+            krpano.call("set(layer[TopRightButton].x,20)");
+            krpano.call("set(layer[TopRightButton].y,20)");
+            krpano.call("set(layer[TopRightButton].onclick,js(onTopRightButtonClick()));");
+            krpano.call("set(fullscreen,true);");
+        }
+
+        function addCenterButton() {
+            krpano.call("addlayer(CenterButton);");
+            krpano.call("set(layer[CenterButton].type,'image')");
+            krpano.call("set(layer[CenterButton].keep,true)");
+            krpano.call("set(layer[CenterButton].edge,center);");
+            krpano.call("set(layer[CenterButton].align,center);");
+            krpano.call("set(layer[CenterButton].url,'/images/cardboard.png');");
+            krpano.call("set(layer[CenterButton].background,true);");
+            krpano.call("set(layer[CenterButton].backgroundcolor,'0x7c7c7c');");
+            krpano.call("set(layer[CenterButton].backgroundalpha,'0.4');");
+            krpano.call("set(layer[CenterButton].width,60px);");
+            krpano.call("set(layer[CenterButton].height,60px);");
+            krpano.call("set(layer[CenterButton].x,0)");
+            krpano.call("set(layer[CenterButton].y,45%)");
+            krpano.call("set(layer[CenterButton].onclick,js(onCenterButtonClick()));");
+            krpano.call("set(fullscreen,true);");
+        }
+        function addPreButton() {
+            krpano.call("addlayer(PreButton);");
+            krpano.call("set(layer[PreButton].type,'image')");
+            krpano.call("set(layer[PreButton].keep,true)");
+            krpano.call("set(layer[PreButton].align,left);");
+            krpano.call("set(layer[PreButton].url,'/images/pre.png');");
+            krpano.call("set(layer[PreButton].background,true);");
+            krpano.call("set(layer[PreButton].backgroundcolor,'0x7c7c7c');");
+            krpano.call("set(layer[PreButton].backgroundalpha,'0.4');");
+            krpano.call("set(layer[PreButton].width,20px);");
+            krpano.call("set(layer[PreButton].height,20px);");
+            krpano.call("set(layer[PreButton].x,30%);");
+            krpano.call("set(layer[PreButton].y,45%);");
+            krpano.call("set(layer[PreButton].onclick,js(onPreButtonClick()));");
+
+        }
+
+        function addNextButton() {
+            krpano.call("addlayer(NextButton);");
+            krpano.call("set(layer[NextButton].type,'image')");
+            krpano.call("set(layer[NextButton].keep,true)");
+            krpano.call("set(layer[NextButton].align,right);");
+            krpano.call("set(layer[NextButton].url,'/images/next.png');");
+            krpano.call("set(layer[NextButton].background,true);");
+            krpano.call("set(layer[NextButton].backgroundcolor,'0x7c7c7c');");
+            krpano.call("set(layer[NextButton].backgroundalpha,'0.4');");
+            krpano.call("set(layer[NextButton].width,20px);");
+            krpano.call("set(layer[NextButton].height,20px);");
+            krpano.call("set(layer[NextButton].x,30%);");
+            krpano.call("set(layer[NextButton].y,45%);");
+            krpano.call("set(layer[NextButton].onclick,js(onNextButtonClick()));");
+        }
+
+
+        (function addLyer() {
+            hiddenSystemMenu();
+            addTopLeftButton();
+            addTopRightButton();
+            addCenterButton();
+            addPreButton();
+            addNextButton();
+        })();
+
+    </script>
+</div>
+
+</body>
+</html>

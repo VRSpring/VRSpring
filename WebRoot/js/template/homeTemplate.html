@@ -1,0 +1,37 @@
+﻿<div class="swiper-container">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide" ng-repeat="banner in banners" end-repeat>
+            <a href="{{banner.detailUrl}}">
+                <img src="{{banner.url}}"/>
+                <p>{{banner.name}}</p>
+            </a>
+        </div>
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+</div>
+
+<div class="content">
+    <div class="weui-row weui-no-gutter" ng-repeat="item in list">
+        <div class="h-center">
+            <div class="weui-col-50 ">
+                <a href="{{item[0].view}}">
+                    <img class="img-left" src="{{item[0].path}}" alt="">
+                </a>
+                <p class='desc'>{{item[0].name}}</p>
+            </div>
+            <div class="weui-col-50">
+                <a href="{{item[1].view}}">
+                    <img class="img-right" src="{{item[1].path}}" alt="">
+                </a>
+                <p class='desc'>{{item[1].name}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="weui-row">
+    <p class='footer'> © 2016 VRSpring 粤ICP备16087767号</p>
+</div>
