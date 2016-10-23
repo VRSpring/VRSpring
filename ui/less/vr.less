@@ -1,4 +1,41 @@
 @primary-color: #56bb36;
+
+@color-primary: #04BE02;
+@color-danger: #f6383a;
+@color-warning: #f60;
+@color-success: #4cd964;
+@color-yellow: #FF4500;
+@color-grey: #aaa;
+@color-fade: rgba(255, 255, 255, 0.8);
+@color-bg: rgba(0, 0, 0, 0.10);
+@primary-color: #56bb36;
+@border-color: #d9d9d9;
+@text-50: 50px;
+@text-45: 45px;
+@text-40: 40px;
+@text-35: 35px;
+@text-30: 30px;
+@text-25: 25px;
+@text-20: 20px;
+@text-1: 1px;
+@text-2: 2px;
+@text-3: 3px;
+@text-4: 4px;
+@text-5: 5px;
+@text-6: 6px;
+@text-7: 7px;
+@text-8: 8px;
+@text-9: 9px;
+@text-10: 10px;
+@text-11: 11px;
+@text-12: 12px;
+@text-13: 13px;
+@text-14: 14px;
+@text-15: 15px;
+@text-16: 16px;
+@text-17: 17px;
+@text-18: 18px;
+@text-19: 19px;
 body {
   min-height: 100vh;
   * {
@@ -39,7 +76,7 @@ body {
       padding: 3px;
       height: 30px;
     }
-    img.logo{
+    img.logo {
       padding: 6px;
     }
     i {
@@ -117,6 +154,7 @@ body {
   }
   div.content {
     height: 100%;
+    padding-bottom: 50px;
     div.v-center {
       height: 100%;
       display: -webkit-box;
@@ -281,5 +319,69 @@ body {
     margin: auto;
     color: #999;
     font-size: 12px;
+  }
+  .weui_tabbar {
+    position: fixed;
+    botton: 0;
+    left: 0;
+    right: 0;
+  }
+  .profile {
+    .profile_top {
+      display: block;
+      position: relative;
+      width: 100%;
+      height: 200px;
+      background: @color-primary;
+      color: white;
+      .profile-row {
+        position: relative;
+        a {
+          margin: 0;
+        }
+        .right {
+          position: absolute;
+          right: 0;
+        }
+      }
+      .avatar {
+        position: absolute;
+        width: 80px;
+        height: 64px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        .avatar_image {
+          margin: auto;
+          width: 64px;
+          height: 64px;
+          border-radius: 50%;
+        }
+        a {
+          display: inline-block;
+          width: 100%;
+          text-align: center;
+          border-radius: 0;
+          border: transparent;
+          color: white;
+        }
+      }
+    }
+    .order {
+      display: flex;
+      width: 100%;
+      border-bottom: solid 1px #ddd;
+      .item {
+        flex: 1;
+        padding: 5px 0;
+        border: 0;
+        border-right: solid 1px #ddd;
+        .weui_tabbar_label {
+          color: @primary-color;
+          font-size: @text-15;
+        }
+      }
+    }
   }
 }

@@ -32,5 +32,13 @@ vr.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
         url: '/about',
         templateUrl: 'js/template/aboutTemplate.html',
         controller: 'aboutController'
+    }).state('upload', {
+        url: '/upload',
+        templateUrl: 'js/template/uploadTemplate.html',
+        controller: 'uploadController'
+    }).state('profile', {
+        url: '/profile',
+        templateUrl: 'js/template/profileTemplate.html',
+        controller: 'profileController'
     });
 });
