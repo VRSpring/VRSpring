@@ -14,6 +14,8 @@ vr.controller('uploadController', function ($scope, $http, $state, $dictionary) 
                 $ele.files = null;
                 if ($scope.pictures.length >= $scope.PICTURES_MAX) {
                     $scope.show_add = false;
+                } else {
+                    $scope.show_add = true;
                 }
                 $scope.$apply();
             }
@@ -41,5 +43,10 @@ vr.controller('uploadController', function ($scope, $http, $state, $dictionary) 
     $scope.picture_click = function ($index) {
         $scope.pictures.splice($index, 1);
         $scope.files.splice($index, 1);
+        if ($scope.pictures.length >= $scope.PICTURES_MAX) {
+            $scope.show_add = false;
+        } else {
+            $scope.show_add = true;
+        }
     }
 });
