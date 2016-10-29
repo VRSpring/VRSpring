@@ -48,15 +48,15 @@
     </div>
 
     <div class="weui_tabbar">
-        <a ui-sref="home" class="weui_tabbar_item weui_bar_item_on">
+        <a ui-sref="home" class="weui_tabbar_item" ng-class="{'weui_bar_item_on': state=='home'}">
             <p class="weui_tabbar_label"><i class="fa fa-home"></i></p>
             <p class="weui_tabbar_label">首页</p>
         </a>
-        <a ui-sref="upload" class="weui_tabbar_item">
+        <a ui-sref="upload" class="weui_tabbar_item" ng-class="{'weui_bar_item_on': state=='upload'}">
             <p class="weui_tabbar_label"><i class="fa fa-upload"></i></p>
             <p class="weui_tabbar_label">上传</p>
         </a>
-        <a ui-sref="profile" class="weui_tabbar_item">
+        <a ui-sref="profile" class="weui_tabbar_item" ng-class="{'weui_bar_item_on': state=='profile'}">
             <p class="weui_tabbar_label"><i class="fa fa-user"></i></p>
             <p class="weui_tabbar_label">我</p>
         </a>

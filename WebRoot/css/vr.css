@@ -28,6 +28,47 @@ body p {
 body .weui_btn_black {
   background: black;
 }
+body .weui_tabbar_label i {
+  font-size: 20px;
+}
+body .upload .title {
+  font-size: 30px;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 0px;
+}
+body .upload .textarea {
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+body .upload .weui_cell_no_border:before,
+body .upload .weui_cell_no_border:after {
+  display: none;
+}
+body .upload .weui_cells .weui_cell .weui_uploader_file,
+body .upload .weui_cells .weui_cell .weui_uploader_input_wrp {
+  padding: 0;
+  margin: 3px;
+  height: 75px;
+  width: 75px;
+  border: 1px dashed #c8c8cd;
+}
+body .upload .weui_cells .weui_cell .weui_uploader_input_wrp {
+  display: inline-block;
+  border: 1px dashed #c8c8cd;
+}
+body .upload .weui_cells .weui_cell .weui_uploader_input_wrp .weui_uploader_input {
+  border: none;
+}
+body .upload .tips {
+  text-align: center;
+  color: #aaa;
+  margin-top: 30px;
+}
+body .upload .weui_btn_area {
+  margin-top: 10px;
+}
 body header {
   width: 100%;
   padding: 5px 0;
@@ -294,14 +335,12 @@ body p.footer {
   color: #999;
   font-size: 12px;
 }
-
 body .weui_tabbar {
   position: fixed;
   botton: 0;
   left: 0;
   right: 0;
 }
-
 body .profile .profile_top {
   display: block;
   position: relative;
@@ -310,20 +349,16 @@ body .profile .profile_top {
   background: #04BE02;
   color: white;
 }
-
 body .profile .profile_top .profile-row {
   position: relative;
 }
-
 body .profile .profile_top .profile-row a {
   margin: 0;
 }
-
 body .profile .profile_top .profile-row .right {
   position: absolute;
   right: 0;
 }
-
 body .profile .profile_top .avatar {
   position: absolute;
   width: 80px;
@@ -331,17 +366,15 @@ body .profile .profile_top .avatar {
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   text-align: center;
 }
-
 body .profile .profile_top .avatar .avatar_image {
   margin: auto;
   width: 64px;
   height: 64px;
   border-radius: 50%;
 }
-
 body .profile .profile_top .avatar a {
   display: inline-block;
   width: 100%;
@@ -350,7 +383,6 @@ body .profile .profile_top .avatar a {
   border: transparent;
   color: white;
 }
-
 body .profile .order {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -358,16 +390,14 @@ body .profile .order {
   width: 100%;
   border-bottom: solid 1px #ddd;
 }
-
 body .profile .order .item {
   -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   padding: 5px 0;
   border: 0;
   border-right: solid 1px #ddd;
 }
-
 body .profile .order .item .weui_tabbar_label {
   color: #56bb36;
   font-size: 15px;

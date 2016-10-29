@@ -65,6 +65,54 @@ body {
   .weui_btn_black {
     background: black;
   }
+  .weui_tabbar_label {
+    i {
+      font-size: 20px;
+    }
+  }
+  .upload {
+    .title {
+      font-size: 30px;
+      text-align: center;
+      padding-top: 20px;
+      padding-bottom: 0px;
+    }
+    .textarea {
+      border-radius: 5px;
+      padding: 5px;
+      border: 1px solid @color-bg;
+    }
+    .weui_cell_no_border:before, .weui_cell_no_border:after {
+      display: none;
+    }
+    .weui_cells {
+      .weui_cell {
+        .weui_uploader_file, .weui_uploader_input_wrp {
+          padding: 0;
+          margin: 3px;
+          height: 75px;
+          width: 75px;
+          border: 1px dashed #c8c8cd;
+        }
+        .weui_uploader_input_wrp {
+          display: inline-block;
+          border: 1px dashed #c8c8cd;
+          .weui_uploader_input {
+            border: none;
+          }
+        }
+      }
+    }
+    .tips {
+      text-align: center;
+      color: @color-grey;
+      margin-top: 30px;
+    }
+    .weui_btn_area {
+      margin-top: 10px;
+    }
+  }
+
   header {
     width: 100%;
     padding: 5px 0;

@@ -2,7 +2,7 @@
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
         <!-- Slides -->
-        <div class="swiper-slide" ng-repeat="banner in banners" end-repeat>
+        <div class="swiper-slide" ng-if="banners&&banners.length>0" ng-repeat="banner in banners" end-repeat>
             <a href="{{banner.detailUrl}}">
                 <img src="{{banner.url}}"/>
                 <p>{{banner.name}}</p>
@@ -14,7 +14,7 @@
 </div>
 
 <div class="content">
-    <div class="weui-row weui-no-gutter" ng-repeat="item in list">
+    <div class="weui-row weui-no-gutter" ng-if="list&&list.length>0" ng-repeat="item in list">
         <div class="h-center">
             <div class="weui-col-50 ">
                 <a href="{{item[0].view}}">
