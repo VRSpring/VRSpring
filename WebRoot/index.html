@@ -15,36 +15,51 @@
 </head>
 
 <body ontouchstart ng-app="com.vrspring.vr" ng-cloak>
-<div ng-controller="mainController" ng-cloak>
-    <header>
-        <div class="weui-row weui-no-gutter">
-            <div class="weui-col-20 text-center">
-                <a href=""><img class='logo' src="./images/logo-300.png"/></a>
-            </div>
-            <div class="weui-col-60 text-center">
-                <div class="tab-container">
-                    <div class="tab">
-                        <span ng-click="toggle('hot')"
-                              ng-class="{true: 'tab-box left active', false: 'tab-box left'}[index=='hot']"><i
-                                class="fa fa-list-ol"></i>热门</span>
-                        <span ng-click="toggle('category')"
-                              ng-class="{true: 'tab-box right active', false: 'tab-box right'}[index=='category']"><i
-                                class="fa fa-search"></i>分类</span>
-                    </div>
-                </div>
-            </div>
-            <div class="weui-col-20 text-center">
-                <a href=""><img src="/images/user.png"/></a>
-            </div>
-        </div>
+<div class='weui_tab' ng-controller="mainController" ng-cloak>
+    <!--<header>-->
+    <!--<div class="weui-row weui-no-gutter">-->
+    <!--<div class="weui-col-20 text-center">-->
+    <!--<a href=""><img class='logo' src="./images/logo-300.png"/></a>-->
+    <!--</div>-->
+    <!--<div class="weui-col-60 text-center">-->
+    <!--<div class="tab-container">-->
+    <!--<div class="tab">-->
+    <!--<span ng-click="toggle('hot')"-->
+    <!--ng-class="{true: 'tab-box left active', false: 'tab-box left'}[index=='hot']"><i-->
+    <!--class="fa fa-list-ol"></i>热门</span>-->
+    <!--<span ng-click="toggle('category')"-->
+    <!--ng-class="{true: 'tab-box right active', false: 'tab-box right'}[index=='category']"><i-->
+    <!--class="fa fa-search"></i>分类</span>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="weui-col-20 text-center">-->
+    <!--<a href=""><img src="/images/user.png"/></a>-->
+    <!--</div>-->
+    <!--</div>-->
 
-        <div class="tags" ng-show="index=='category'">
-            <span ng-click="$parent.typeChange(cat.id)" ng-class="{true: 'tag active', false: 'tag'}[cat.id==$parent.select_type]" ng-repeat="cat in category"
-                  value="{{cat.id}}">{{cat.type}}</span>
-        </div>
-    </header>
+    <!--<div class="tags" ng-show="index=='category'">-->
+    <!--<span ng-click="$parent.typeChange(cat.id)" ng-class="{true: 'tag active', false: 'tag'}[cat.id==$parent.select_type]" ng-repeat="cat in category"-->
+    <!--value="{{cat.id}}">{{cat.type}}</span>-->
+    <!--</div>-->
+    <!--</header>-->
 
     <div ui-view="">
+    </div>
+
+    <div class="weui_tabbar">
+        <a ui-sref="home" class="weui_tabbar_item weui_bar_item_on">
+            <p class="weui_tabbar_label"><i class="fa fa-home"></i></p>
+            <p class="weui_tabbar_label">首页</p>
+        </a>
+        <a ui-sref="upload" class="weui_tabbar_item">
+            <p class="weui_tabbar_label"><i class="fa fa-upload"></i></p>
+            <p class="weui_tabbar_label">上传</p>
+        </a>
+        <a ui-sref="profile" class="weui_tabbar_item">
+            <p class="weui_tabbar_label"><i class="fa fa-user"></i></p>
+            <p class="weui_tabbar_label">我</p>
+        </a>
     </div>
 </div>
 <script src="js/lib/jquery-2.1.4.min.js" type="text/javascript"></script>
@@ -62,6 +77,8 @@
 <script type="text/javascript" src='js/controller/homeController.js'></script>
 <script type="text/javascript" src='js/controller/aboutController.js'></script>
 <script type="text/javascript" src='js/controller/channelController.js'></script>
+<script type="text/javascript" src='js/controller/uploadController.js'></script>
+<script type="text/javascript" src='js/controller/profileController.js'></script>
 </body>
 
 </html>
