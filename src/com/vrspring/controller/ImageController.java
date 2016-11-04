@@ -33,7 +33,6 @@ public class ImageController
 	public HomeBean list(HttpServletRequest request) throws IOException
 	{
 		System.out.println("请求开始！");
-taeBcFileSAO.getDirs
 		HomeBean homeBean = new HomeBean();
 		List<MediaDir> listMeDirs = taeBcFileSAO.getDirs("/"
 				+ ConfigConstants.IMAGE_DIRECTORY, 1, 10);
