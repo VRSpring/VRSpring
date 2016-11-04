@@ -4,6 +4,7 @@ package com.vrspring.Bean;
  * Created by xie on 2016/9/11.
  */
 public class Banner {
+
     private String url;
     private String name;
     private String detailUrl;
