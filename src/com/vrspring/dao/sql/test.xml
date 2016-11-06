@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE sqlMap  
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"  
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap>
+	<!-- <typeAlias alias="user" type="com.itmyhome.User" /> -->
+	<!-- 查询 -->
+	<select id="test.getId" parameterClass="String" resultClass="String">
+		<![CDATA[
+		    SELECT NAME AS id FROM vrsource_img WHERE id_vrsource_img=32124354654;
+		]]>
+	</select>
+</sqlMap>
